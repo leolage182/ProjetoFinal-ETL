@@ -101,7 +101,6 @@ graph TB
 ```
 etl/
 ├── 📄 docker-compose.yml          # Orquestração de containers
-├── 📄 .env.example               # Variáveis de ambiente
 ├── 📊 *.csv                      # Dados brutos e limpos
 │
 ├── 🐳 etl-data-cleaning/         # Container de limpeza de dados
@@ -222,35 +221,28 @@ CREATE TABLE avaliacoes (
    cd ProjetoFinal-ETL
    ```
 
-2. **Configure as variáveis de ambiente**
-   ```bash
-   cp .env.example .env
-   # Edite o arquivo .env conforme necessário
-   ```
-
-3. **Execute o pipeline completo**
+2. **Execute o pipeline completo**
    ```bash
    docker-compose up --build
    ```
 
-4. **Acesse a aplicação**
+3. **Acesse a aplicação**
    - **Web App**: http://localhost
    - **API**: http://localhost/api/filmes
 
-### Execução em Produção
+### Limpeza e Reinicialização
+
+Para rodar novamente ou limpar os dados:
 
 ```bash
-# Pull da imagem do Docker Hub
-docker pull leolage182/movie-rating-app:latest
+# Para o ambiente e remove volumes (limpa dados do PostgreSQL)
+docker-compose down -v
 
-# Execute com configurações de produção
-docker run -d \
-  --name movie-app \
-  -p 80:80 \
-  -e PG_HOST=seu-postgres-host \
-  -e PG_USER=seu-usuario \
-  -e PG_PASS=sua-senha \
-  leolage182/movie-rating-app:latest
+# Remove também as imagens (opcional)
+docker-compose down -v --rmi all
+
+# Para rodar novamente do zero
+docker-compose up --build
 ```
 
 ## 🔌 API Endpoints
