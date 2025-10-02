@@ -176,26 +176,22 @@ CREATE TABLE avaliacoes (
 );
 ```
 
+## 💼 Justificativas de Negócio
+
+**Inteligência de Mercado**: Permite a rápida identificação de tendências de consumo e preferências de conteúdo (Top Filmes por Gênero, Filmes Mais Populares/Odiados), direcionando estratégias de aquisição e marketing.
+
+**Engajamento do Cliente**: Facilita a identificação dos usuários mais engajados (Top Usuários Avaliadores), criando oportunidades para programas de fidelidade e marketing de comunidade.
+
+**Otimização de Conteúdo**: Ajuda a compreender a performance do catálogo em diferentes segmentos (Nota Média por Gênero, Avaliações por País), auxiliando na curadoria e na gestão de conteúdo.
+
 ## 📊 Data Marts
 
 ### Views Analíticas Implementadas
 
 1. **🏆 Top Filmes por Gênero**
-   ```sql
-   CREATE VIEW vw_top_filmes_por_genero AS
-   SELECT genero, titulo, nota_media, total_avaliacoes, ranking
-   FROM filmes f JOIN avaliacoes a ON f.titulo = a.filme_titulo
-   GROUP BY genero, titulo
-   ORDER BY genero, AVG(nota) DESC;
-   ```
+
 
 2. **👑 Top Usuários Avaliadores**
-   ```sql
-   CREATE VIEW vw_top_usuarios_avaliacoes AS
-   SELECT nome, email, total_avaliacoes, nota_media_dada
-   FROM usuarios u JOIN avaliacoes a ON u.id = a.user_id
-   GROUP BY u.id ORDER BY COUNT(a.id) DESC;
-   ```
 
 3. **📉 Piores Filmes por Gênero**
 4. **🌍 Avaliações por País**
@@ -319,17 +315,11 @@ docker-compose logs movie-app
 docker-compose logs pg-dados
 docker-compose logs etl-data-cleaning
 ```
-
-### Métricas de Saúde
-- **Health checks** automáticos
-- **Restart policies** configuradas
-- **Volume persistence** para dados
-
 ## 👨‍💻 Autor
 
 **Leonardo Lage**
 - GitHub: [@leolage182](https://github.com/leolage182)
-- LinkedIn: [Leonardo Lage](https://linkedin.com/in/leonardo-lage)
+- LinkedIn: [Leonardo Lage](https://www.linkedin.com/in/leonardo-lage-016568194/)
 
 ---
 
