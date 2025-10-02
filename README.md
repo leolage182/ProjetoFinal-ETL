@@ -322,5 +322,3 @@ docker-compose logs etl-data-cleaning
 - LinkedIn: [Leonardo Lage](https://www.linkedin.com/in/leonardo-lage-016568194/)
 
 ---
-
-⭐ **Se este projeto foi útil para você, considere dar uma estrela!**
