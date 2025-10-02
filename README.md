@@ -315,49 +315,6 @@ jobs:
 - 📦 **Push automático** para Docker Hub
 - 🚀 **Deploy automático** em ambiente de produção
 
-## 🎯 Demonstração
-
-### 1. Pipeline ETL em Ação
-```bash
-# Logs do pipeline
-✅ Limpeza de dados de filmes concluída! (500 registros)
-✅ Limpeza de dados de usuários concluída! (200 registros)
-✅ Limpeza de dados de avaliações concluída! (1000 registros)
-✅ Dados carregados no PostgreSQL
-✅ Views de Data Marts criadas
-🚀 Aplicação Flask iniciada em http://localhost
-```
-
-### 2. Data Marts Funcionais
-- **Dashboard interativo** com filtros por gênero
-- **Consultas SQL otimizadas** com índices
-- **Visualizações responsivas** em Bootstrap
-
-### 3. Métricas de Performance
-- **Tempo de ETL**: ~30 segundos
-- **Tempo de build**: ~2 minutos
-- **Uptime**: 99.9%
-
-## 🔧 Configuração de Ambiente
-
-### Variáveis de Ambiente (.env)
-```bash
-# Banco de Dados
-PG_USER=user
-PG_PASS=secret
-PG_DB=dw
-PG_HOST=pg-dados
-PG_PORT=5432
-
-# Aplicação
-FLASK_ENV=production
-SECRET_KEY=sua-chave-secreta-aqui
-
-# Docker Hub (para CI/CD)
-DOCKER_USERNAME=seu-usuario
-DOCKER_PASSWORD=sua-senha
-```
-
 ## 📈 Monitoramento e Logs
 
 ### Logs Estruturados
@@ -375,18 +332,6 @@ docker-compose logs etl-data-cleaning
 - **Health checks** automáticos
 - **Restart policies** configuradas
 - **Volume persistence** para dados
-
-## 🤝 Contribuição
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
 
 ## 👨‍💻 Autor
 
