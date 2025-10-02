@@ -1,0 +1,116 @@
+user_id,filme_titulo,nota,comentario
+1,The Shawshank Redemption,9.5,Filme incrível! Uma obra-prima do cinema.
+2,The Godfather,9.0,Clássico absoluto. Marlon Brando brilhante.
+3,The Dark Knight,8.8,Heath Ledger como Coringa foi espetacular.
+4,Pulp Fiction,8.5,Tarantino no seu melhor. Diálogos geniais.
+5,Forrest Gump,8.2,Tom Hanks emocionante. História tocante.
+1,Inception,8.7,Christopher Nolan é um gênio. Filme complexo e fascinante.
+6,Fight Club,8.3,Filme que te faz pensar. Brad Pitt excelente.
+7,The Matrix,8.9,Revolucionou o cinema. Efeitos visuais incríveis.
+8,Goodfellas,8.4,Scorsese mostra como fazer um filme de máfia.
+9,The Lord of the Rings: The Return of the King,9.1,Épico! Conclusão perfeita da trilogia.
+10,Star Wars: Episode V - The Empire Strikes Back,8.6,O melhor filme de Star Wars. Vader impressionante.
+2,Casablanca,8.0,Romance clássico. Humphrey Bogart icônico.
+11,One Flew Over the Cuckoo's Nest,8.5,Jack Nicholson em grande forma. Drama poderoso.
+12,Schindler's List,9.2,Spielberg retrata o horror com sensibilidade.
+13,12 Angry Men,8.7,Filme de tribunal magistral. Atuações impecáveis.
+3,The Godfather: Part II,8.9,Sequência à altura do original. Al Pacino brilha.
+14,Citizen Kane,8.1,Obra-prima de Orson Welles. Técnica inovadora.
+15,Vertigo,7.8,Hitchcock em estado puro. Suspense psicológico.
+16,Psycho,8.2,Filme que mudou o thriller. Cena do chuveiro icônica.
+4,Sunset Boulevard,7.9,Billy Wilder genial. Crítica ao sistema hollywoodiano.
+17,Apocalypse Now,8.3,Coppola retrata a loucura da guerra.
+18,Taxi Driver,8.1,De Niro intenso. Scorsese no seu melhor.
+19,2001: A Space Odyssey,8.0,Kubrick visionário. Filme à frente do seu tempo.
+5,Lawrence of Arabia,8.4,Épico do deserto. David Lean magistral.
+20,Raging Bull,8.2,De Niro se transforma. Boxe como metáfora.
+6,Singin' in the Rain,7.7,Musical alegre e divertido. Gene Kelly fantástico.
+21,Some Like It Hot,8.0,Comédia atemporal. Marilyn Monroe deslumbrante.
+22,North by Northwest,8.1,Hitchcock em grande forma. Cary Grant carismático.
+7,The Wizard of Oz,7.5,Clássico infantil que encanta adultos também.
+23,Rear Window,8.3,Voyeurismo cinematográfico. Grace Kelly elegante.
+24,City Lights,7.8,Chaplin emociona e diverte. Cinema mudo genial.
+8,The Searchers,7.9,John Wayne em papel complexo. Western profundo.
+25,Modern Times,7.6,Chaplin critica a industrialização com humor.
+26,Double Indemnity,8.0,Film noir perfeito. Barbara Stanwyck fatal.
+9,The Maltese Falcon,7.7,Bogart como detetive icônico. Mistério envolvente.
+27,To Kill a Mockingbird,8.2,Gregory Peck memorável. Lição de moral.
+28,The Third Man,8.1,Thriller pós-guerra. Orson Welles vilão perfeito.
+10,The Treasure of the Sierra Madre,7.8,Bogart contra a ganância. Lição de vida.
+29,The Best Years of Our Lives,7.9,Drama pós-guerra tocante. Veteranos em foco.
+30,Dr. Strangelove,8.4,Kubrick satiriza a Guerra Fria. Comédia negra genial.
+11,Bonnie and Clyde,7.6,Revolução no cinema americano. Violência estilizada.
+31,The Graduate,7.8,Dustin Hoffman estreia com brilho. Crítica social.
+32,Chinatown,8.5,Film noir moderno. Jack Nicholson investigativo.
+12,Annie Hall,7.7,Woody Allen romântico e neurótico. Diane Keaton perfeita.
+33,The Godfather: Part III,6.8,Não tão boa quanto as anteriores mas ainda boa.
+34,Goodfellas,8.6,Scorsese retrata a máfia com realismo brutal.
+13,Titanic,7.4,Romance épico. Leonardo DiCaprio e Kate Winslet.
+35,Saving Private Ryan,8.7,Spielberg mostra os horrores da guerra.
+36,The Silence of the Lambs,8.5,Anthony Hopkins assustador. Thriller psicológico.
+14,Terminator 2: Judgment Day,8.3,Schwarzenegger icônico. Efeitos revolucionários.
+37,Aliens,8.2,Sequência à altura. Sigourney Weaver guerreira.
+38,Raiders of the Lost Ark,8.4,Indiana Jones aventureiro. Spielberg divertido.
+15,E.T. the Extra-Terrestrial,7.9,Spielberg emociona crianças e adultos.
+39,Back to the Future,8.1,Viagem no tempo divertida. Michael J. Fox carismático.
+40,Blade Runner,8.0,Ficção científica filosófica. Ridley Scott visionário.
+16,The Empire Strikes Back,8.8,Star Wars no seu auge. Vader revelado.
+41,Jaws,7.8,Tubarão que aterrorizou praias. Suspense marítimo.
+42,Close Encounters of the Third Kind,7.6,Spielberg e os OVNIs. Encontro cósmico.
+17,Superman,7.5,Christopher Reeve é o Superman perfeito.
+43,Rocky,7.9,Stallone inspira com underdog boxer.
+44,The Deer Hunter,8.0,De Niro na Guerra do Vietnã. Drama intenso.
+18,Kramer vs. Kramer,7.7,Dustin Hoffman pai divorciado. Drama familiar.
+45,Ordinary People,7.4,Robert Redford dirige drama familiar tocante.
+46,Chariots of Fire,7.2,Corrida olímpica inspiradora. Trilha sonora marcante.
+19,Gandhi,7.8,Ben Kingsley como Mahatma Gandhi. Biografia épica.
+47,Terms of Endearment,7.5,Shirley MacLaine e Jack Nicholson. Drama familiar.
+48,Amadeus,8.1,Mozart genial. F. Murray Abraham invejoso Salieri.
+20,Out of Africa,7.3,Meryl Streep na África. Romance épico.
+49,Platoon,8.0,Oliver Stone na Guerra do Vietnã. Realismo brutal.
+50,The Last Emperor,7.6,Bernardo Bertolucci retrata a China imperial.
+21,Rain Man,7.8,Dustin Hoffman autista. Tom Cruise aprende.
+51,Driving Miss Daisy,7.2,Morgan Freeman motorista. Jessica Tandy patroa.
+52,Dances with Wolves,7.5,Kevin Costner com índios. Western revisitado.
+22,The Silence of the Lambs,8.7,Hannibal Lecter aterrorizante. Jodie Foster corajosa.
+53,Unforgiven,8.1,Clint Eastwood desconstrui o western.
+54,Schindler's List,9.3,Spielberg retrata o Holocausto com maestria.
+23,Forrest Gump,8.4,Tom Hanks atravessa décadas americanas.
+55,Braveheart,7.9,Mel Gibson guerreiro escocês. Épico medieval.
+56,The English Patient,7.1,Romance na Segunda Guerra. Ralph Fiennes.
+24,Titanic,7.6,James Cameron e o naufrágio mais famoso.
+57,Shakespeare in Love,7.0,Gwyneth Paltrow e Joseph Fiennes. Romance elisabetano.
+58,American Beauty,8.2,Kevin Spacey em crise de meia-idade.
+25,Gladiator,8.0,Russell Crowe gladiador romano. Ridley Scott épico.
+59,A Beautiful Mind,7.8,Russell Crowe matemático esquizofrênico.
+60,Chicago,7.3,Musical sobre crime e fama. Catherine Zeta-Jones.
+26,The Lord of the Rings: The Return of the King,9.0,Peter Jackson conclui a saga épica.
+61,Million Dollar Baby,8.1,Clint Eastwood treina Hilary Swank. Boxe feminino.
+62,Crash,7.2,Paul Haggis explora racismo em Los Angeles.
+27,The Departed,8.3,Scorsese com Leonardo DiCaprio. Máfia irlandesa.
+63,No Country for Old Men,8.4,Irmãos Coen com Javier Bardem vilão.
+64,Slumdog Millionaire,7.7,Danny Boyle na Índia. História de superação.
+28,The Hurt Locker,7.6,Kathryn Bigelow na Guerra do Iraque.
+65,The King's Speech,7.9,Colin Firth rei gago. Drama histórico.
+66,The Artist,7.5,Michel Hazanavicius homenageia cinema mudo.
+29,Argo,7.8,Ben Affleck dirige thriller político.
+67,12 Years a Slave,8.3,Steve McQueen retrata escravidão americana.
+68,Birdman,7.9,Alejandro González Iñárritu com Michael Keaton.
+30,Spotlight,8.1,Tom McCarthy investiga escândalo na Igreja.
+69,Moonlight,7.6,Barry Jenkins explora identidade e sexualidade.
+70,The Shape of Water,7.4,Guillermo del Toro com criatura aquática.
+31,Green Book,7.5,Peter Farrelly sobre amizade inter-racial.
+71,Parasite,8.9,Bong Joon-ho critica desigualdade social.
+72,Nomadland,7.3,Chloé Zhao com Frances McDormand nômade.
+32,CODA,7.7,Sian Heder sobre família de surdos.
+73,Everything Everywhere All at Once,8.5,Daniels com multiverso maluco e emocional.
+74,Top Gun: Maverick,8.2,Tom Cruise volta como piloto. Nostalgia e ação.
+33,Avatar: The Way of Water,7.8,James Cameron retorna a Pandora. Efeitos visuais.
+75,The Banshees of Inisherin,7.9,Martin McDonagh com Colin Farrell. Drama irlandês.
+76,Tár,7.6,Todd Field com Cate Blanchett maestrina.
+34,Women Talking,7.4,Sarah Polley sobre mulheres menonitas.
+77,The Fabelmans,7.8,Spielberg autobiográfico sobre cinema.
+78,Elvis,7.5,Baz Luhrmann com Austin Butler como Elvis.
+35,Dune,8.0,Denis Villeneuve adapta Frank Herbert. Ficção científica épica.
+79,Spider-Man: No Way Home,8.3,Tom Holland com multiverso de Homens-Aranha.
+80,The Batman,7.9,Matt Reeves com Robert Pattinson. Batman noir.
