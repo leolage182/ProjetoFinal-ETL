@@ -1,7 +1,7 @@
 # 🎬 ProjetoFinal-ETL - Sistema de Avaliação de Filmes
 
 [![CI/CD Pipeline](https://github.com/leolage182/ProjetoFinal-ETL/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/leolage182/ProjetoFinal-ETL/actions)
-[![Docker Hub](https://img.shields.io/docker/pulls/leolage182/movie-rating-app)](https://hub.docker.com/r/leolage182/movie-rating-app)
+[![Docker Hub](https://img.shields.io/docker/pulls/leonardo148/movie-rating-app)](https://hub.docker.com/r/leonardo148/movie-rating-app)
 
 Sistema completo de ETL (Extract, Transform, Load) para análise de dados de filmes e avaliações de usuários, com interface web para visualização de Data Marts e dashboards analíticos.
 
