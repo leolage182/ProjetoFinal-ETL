@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}Piores Filmes por Gênero - Movie Rating App{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">
+                    <i class="fas fa-thumbs-down me-2"></i>Top 10 Filmes com Piores Avaliações por Gênero
+                </h2>
+                <a href="{{ url_for('data_marts') }}" class="btn btn-dark btn-sm">
+                    <i class="fas fa-arrow-left me-1"></i>Voltar
+                </a>
+            </div>
+            <div class="card-body">
+                {% if filmes %}
+                    {% set current_genre = '' %}
+                    {% for filme in filmes %}
+                        {% if filme.genero != current_genre %}
+                            {% if current_genre != '' %}
+                                </div>
+                            {% endif %}
+                            {% set current_genre = filme.genero %}
+                            <div class="mb-4">
+                                <h4 class="text-warning border-bottom pb-2">
+                                    <i class="fas fa-film me-2"></i>{{ filme.genero }}
+                                </h4>
+                                <div class="row">
+                        {% endif %}
+                        
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <div class="card h-100 border-warning">
+                                <div class="card-body">
+                                    <h6 class="card-title text-truncate" title="{{ filme.titulo }}">
+                                        {{ filme.titulo }}
+                                    </h6>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">{{ filme.ano_lancamento }}</small>
+                                        <div class="star-rating text-danger">
+                                            <i class="fas fa-star"></i>
+                                            <strong>{{ "%.1f"|format(filme.nota_media) }}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2">
+                                        <small class="text-muted">
+                                            <i class="fas fa-users me-1"></i>{{ filme.total_avaliacoes }} avaliações
+                                        </small>
+                                    </div>
+                                    <div class="mt-2">
+                                        <span class="badge bg-warning text-dark">
+                                            #{{ filme.ranking }}º pior
+                                        </span>
+                                    </div>
+                                    
+                                    <!-- Indicador visual da nota baixa -->
+                                    <div class="mt-2">
+                                        <div class="d-flex align-items-center">
+                                            {% set nota = filme.nota_media or 0 %}
+                                            {% for i in range(1, 6) %}
+                                                {% if nota >= i * 2 %}
+                                                    <i class="fas fa-star text-warning me-1" style="font-size: 0.8rem;"></i>
+                                                {% elif nota >= (i * 2) - 1 %}
+                                                    <i class="fas fa-star-half-alt text-warning me-1" style="font-size: 0.8rem;"></i>
+                                                {% else %}
+                                                    <i class="far fa-star text-muted me-1" style="font-size: 0.8rem;"></i>
+                                                {% endif %}
+                                            {% endfor %}
+                                            <small class="text-muted ms-1">({{ "%.1f"|format(nota) }}/10)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {% if loop.last %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="alert alert-warning">
+                                <h6><i class="fas fa-exclamation-triangle me-2"></i>Sobre esta Análise</h6>
+                                <p class="mb-0">
+                                    Esta lista mostra os filmes com as menores notas médias em cada gênero. 
+                                    Os dados são baseados nas avaliações dos usuários e podem ajudar a identificar 
+                                    filmes que não atenderam às expectativas do público.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-film text-muted" style="font-size: 4rem;"></i>
+                        <h4 class="text-muted mt-3">Nenhum filme encontrado</h4>
+                        <p class="text-muted">Não há dados suficientes para gerar o ranking.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.star-rating {
+    font-size: 0.9rem;
+}
+
+.badge {
+    font-size: 0.75rem;
+}
+
+.border-warning {
+    border-color: #ffc107 !important;
+}
+
+.progress {
+    background-color: #f8f9fa;
+}
+
+.bg-warning {
+    background-color: #ffc107 !important;
+}
+</style>
+{% endblock %}

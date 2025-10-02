@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar Usuário - Movie Rating{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+                <h3 class="mb-0">
+                    <i class="fas fa-user-plus me-2"></i>Cadastrar Novo Usuário
+                </h3>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">
+                            <i class="fas fa-user me-1"></i>Nome Completo
+                        </label>
+                        <input type="text" class="form-control" id="nome" name="nome" required 
+                               placeholder="Digite seu nome completo">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope me-1"></i>Email
+                        </label>
+                        <input type="email" class="form-control" id="email" name="email" required 
+                               placeholder="Digite seu email">
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-save me-2"></i>Cadastrar Usuário
+                        </button>
+                        <a href="{{ url_for('usuarios') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Voltar para Usuários
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-info-circle me-2"></i>Informações Importantes
+                </h5>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success me-2"></i>O email deve ser único no sistema</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Todos os campos são obrigatórios</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Os dados serão salvos no banco de dados</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Após o cadastro, você poderá avaliar filmes</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

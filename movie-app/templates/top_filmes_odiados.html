@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}Top 5 Filmes Mais Odiados - Movie Rating App{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h2 class="mb-0">
+                    <i class="fas fa-thumbs-down me-2"></i>Top 5 Filmes Mais Odiados por Gênero
+                </h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">Consulta analítica específica que identifica os 5 filmes com as piores avaliações em cada gênero.</p>
+                
+                <!-- Consulta SQL -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card bg-light">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-code me-2"></i>Consulta SQL Utilizada</h5>
+                            </div>
+                            <div class="card-body">
+                                <pre class="bg-dark text-light p-3 rounded"><code>{{ query_sql }}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resultados -->
+                {% if filmes %}
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-danger">
+                                <tr>
+                                    <th><i class="fas fa-film me-1"></i>Gênero</th>
+                                    <th><i class="fas fa-sort-numeric-down me-1"></i>Ranking</th>
+                                    <th><i class="fas fa-video me-1"></i>Título</th>
+                                    <th><i class="fas fa-calendar me-1"></i>Ano</th>
+                                    <th><i class="fas fa-star me-1"></i>Nota Média</th>
+                                    <th><i class="fas fa-users me-1"></i>Total Avaliações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for filme in filmes %}
+                                <tr>
+                                    <td>
+                                        <span class="badge bg-secondary">{{ filme.genero }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">#{{ filme.ranking }}</span>
+                                    </td>
+                                    <td><strong>{{ filme.titulo }}</strong></td>
+                                    <td>{{ filme.ano_lancamento }}</td>
+                                    <td>
+                                        {% if filme.nota_media <= 3.0 %}
+                                            <span class="badge bg-danger">{{ filme.nota_media }}</span>
+                                        {% elif filme.nota_media <= 5.0 %}
+                                            <span class="badge bg-warning text-dark">{{ filme.nota_media }}</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">{{ filme.nota_media }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-info">{{ filme.total_avaliacoes }}</span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card border-warning">
+                                <div class="card-header bg-warning text-dark">
+                                    <h6 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Análise de Qualidade</h6>
+                                </div>
+                                <div class="card-body">
+                                    {% set notas_baixas = filmes|selectattr('nota_media', '<=', 3.0)|list|length %}
+                                    {% set notas_medias = filmes|selectattr('nota_media', '>', 3.0)|selectattr('nota_media', '<=', 5.0)|list|length %}
+                                    <ul class="list-unstyled mb-0">
+                                        <li><strong>Filmes com nota ≤ 3.0:</strong> 
+                                            <span class="badge bg-danger">{{ notas_baixas }}</span>
+                                        </li>
+                                        <li><strong>Filmes com nota 3.1-5.0:</strong> 
+                                            <span class="badge bg-warning text-dark">{{ notas_medias }}</span>
+                                        </li>
+                                        <li><strong>Total analisado:</strong> {{ filmes|length }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-warning">
+                                <h6><i class="fas fa-info-circle me-2"></i>Insights da Análise</h6>
+                                <ul class="mb-0">
+                                    <li>Identifica padrões de qualidade por gênero</li>
+                                    <li>Mostra apenas os <strong>5 piores</strong> de cada categoria</li>
+                                    <li>Útil para análise de tendências negativas</li>
+                                    <li>Ordenação: Por gênero e ranking (pior nota primeiro)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning">
+                        <h5><i class="fas fa-exclamation-triangle me-2"></i>Nenhum dado encontrado</h5>
+                        <p class="mb-0">Não há dados suficientes para gerar esta análise. Verifique se existem filmes e avaliações no sistema.</p>
+                    </div>
+                {% endif %}
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <a href="{{ url_for('data_marts') }}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-1"></i>Voltar aos Data Marts
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

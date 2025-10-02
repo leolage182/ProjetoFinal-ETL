@@ -1,0 +1,102 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15
+    container_name: pg-dados
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: dw
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    networks:
+      - etl-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d dw"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ETL 1: Data Cleaning
+  etl-data-cleaning:
+    build:
+      context: ./etl-data-cleaning
+      dockerfile: Dockerfile-dados01
+    container_name: etl-data-cleaning
+    volumes:
+      - ./filmes_raw.csv:/app/input/filmes_raw.csv:ro
+      - ./usuarios_raw.csv:/app/input/usuarios_raw.csv:ro
+      - ./avaliacoes_raw.csv:/app/input/avaliacoes_raw.csv:ro
+      - ./filmes_clean_500.csv:/app/input/filmes_clean_500.csv:ro
+      - ./etl-data-cleaning:/app/input/scripts
+      - etl-shared-data:/app/data
+    networks:
+      - etl-network
+
+  # ETL 2: PostgreSQL Loading
+  etl-postgres:
+    build: ./etl-postgres
+    container_name: etl-postgres
+    environment:
+      PG_HOST: postgres
+      PG_PORT: 5432
+      PG_USER: user
+      PG_PASS: secret
+      PG_DB: dw
+    depends_on:
+      postgres:
+        condition: service_healthy
+      etl-data-cleaning:
+        condition: service_completed_successfully
+    volumes:
+      - etl-shared-data:/app/data
+    networks:
+      - etl-network
+
+  # Movie Rating Flask App
+  movie-app:
+    build: ./movie-app
+    container_name: movie-rating-app
+    environment:
+      PG_HOST: postgres
+      PG_PORT: 5432
+      PG_USER: user
+      PG_PASS: secret
+      PG_DB: dw
+    depends_on:
+      postgres:
+        condition: service_healthy
+      etl-postgres:
+        condition: service_completed_successfully
+    volumes:
+      - ./filmes_raw.csv:/app/data/filmes_raw.csv:ro
+      - ./filmes_clean_500.csv:/app/data/filmes_clean_500.csv:ro
+      - ./movie-app/data:/app/data/local
+    networks:
+      - etl-network
+    restart: unless-stopped
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: movie-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./movie-app/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - movie-app
+    networks:
+      - etl-network
+
+networks:
+  etl-network:
+    driver: bridge
+
+volumes:
+  pgdata:
+  etl-shared-data:

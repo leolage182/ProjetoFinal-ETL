@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}Filmes - Movie Rating{% endblock %}
+
+{% block content %}
+<!-- Filtros -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-filter me-2"></i>Filtrar Filmes
+                </h5>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" id="searchTitle" class="form-control" 
+                               placeholder="Buscar por título...">
+                    </div>
+                    <div class="col-md-4">
+                        <select id="filterGenre" class="form-select">
+                            <option value="">Todos os gêneros</option>
+                            {% if filmes %}
+                                {% set genres = filmes|map(attribute='genero')|unique|list %}
+                                {% for genre in genres %}
+                                <option value="{{ genre }}">{{ genre }}</option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select id="filterYear" class="form-select">
+                            <option value="">Todos os anos</option>
+                            {% if filmes %}
+                                {% set years = filmes|map(attribute='ano_lancamento')|unique|sort(reverse=true)|list %}
+                                {% for year in years %}
+                                <option value="{{ year }}">{{ year }}</option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-0">
+                    <i class="fas fa-video me-2"></i>Catálogo de Filmes
+                </h3>
+                <p class="mb-0 text-muted">Clique em um filme para avaliá-lo</p>
+            </div>
+            <div class="card-body">
+                {% if filmes %}
+                    <div class="row">
+                        {% for filme in filmes %}
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100 movie-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ filme.titulo }}</h5>
+                                    <div class="movie-info mb-3">
+                                        <span class="badge bg-primary me-2">
+                                            <i class="fas fa-calendar me-1"></i>{{ filme.ano_lancamento }}
+                                        </span>
+                                        <span class="badge bg-secondary me-2">
+                                            <i class="fas fa-tags me-1"></i>{{ filme.genero }}
+                                        </span>
+                                        {% if filme.nota_imdb > 0 %}
+                                        <span class="badge bg-warning text-dark">
+                                            <i class="fas fa-star me-1"></i>{{ filme.nota_imdb }}
+                                        </span>
+                                        {% endif %}
+                                    </div>
+                                    
+                                    <div class="d-grid">
+                                        <a href="{{ url_for('avaliar_filme') }}?filme={{ filme.titulo|urlencode }}" 
+                                           class="btn btn-primary">
+                                            <i class="fas fa-star me-2"></i>Avaliar Filme
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="mt-4">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Total de filmes disponíveis: <strong>{{ filmes|length }}</strong>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-video fa-4x text-muted mb-3"></i>
+                        <h4 class="text-muted">Nenhum filme encontrado</h4>
+                        <p class="text-muted">Não foi possível carregar o catálogo de filmes.</p>
+                        <a href="{{ url_for('index') }}" class="btn btn-primary">
+                            <i class="fas fa-home me-2"></i>Voltar ao Início
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<style>
+.movie-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.movie-info .badge {
+    font-size: 0.8em;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchTitle = document.getElementById('searchTitle');
+    const filterGenre = document.getElementById('filterGenre');
+    const filterYear = document.getElementById('filterYear');
+    const movieCards = document.querySelectorAll('.movie-card').forEach(card => card.parentElement);
+
+    function filterMovies() {
+        const titleFilter = searchTitle.value.toLowerCase();
+        const genreFilter = filterGenre.value;
+        const yearFilter = filterYear.value;
+
+        document.querySelectorAll('.movie-card').forEach(card => {
+            const cardParent = card.parentElement;
+            const title = card.querySelector('.card-title').textContent.toLowerCase();
+            const genre = card.querySelector('.badge:nth-child(2)').textContent.replace('🏷️', '').trim();
+            const year = card.querySelector('.badge:first-child').textContent.replace('📅', '').trim();
+
+            const titleMatch = title.includes(titleFilter);
+            const genreMatch = !genreFilter || genre === genreFilter;
+            const yearMatch = !yearFilter || year === yearFilter;
+
+            if (titleMatch && genreMatch && yearMatch) {
+                cardParent.style.display = 'block';
+            } else {
+                cardParent.style.display = 'none';
+            }
+        });
+    }
+
+    searchTitle.addEventListener('input', filterMovies);
+    filterGenre.addEventListener('change', filterMovies);
+    filterYear.addEventListener('change', filterMovies);
+});
+</script>
+{% endblock %}

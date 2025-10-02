@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block title %}Nota Média por Gênero - Movie Rating App{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h2 class="mb-0">
+                    <i class="fas fa-chart-line me-2"></i>Nota Média por Gênero dos Usuários
+                </h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">Data Mart que apresenta estatísticas completas de avaliações por gênero cinematográfico.</p>
+                
+                <!-- Consulta SQL -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card bg-light">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-code me-2"></i>Consulta SQL Utilizada</h5>
+                            </div>
+                            <div class="card-body">
+                                <pre class="bg-dark text-light p-3 rounded"><code>{{ query_sql }}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resultados -->
+                {% if generos %}
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th><i class="fas fa-film me-1"></i>Gênero</th>
+                                    <th><i class="fas fa-star me-1"></i>Nota Média</th>
+                                    <th><i class="fas fa-list me-1"></i>Total Avaliações</th>
+                                    <th><i class="fas fa-users me-1"></i>Usuários Avaliaram</th>
+                                    <th><i class="fas fa-video me-1"></i>Filmes Avaliados</th>
+                                    <th><i class="fas fa-arrow-down me-1"></i>Nota Mínima</th>
+                                    <th><i class="fas fa-arrow-up me-1"></i>Nota Máxima</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for genero in generos %}
+                                <tr>
+                                    <td>
+                                        <strong>{{ genero.genero }}</strong>
+                                    </td>
+                                    <td>
+                                        {% if genero.nota_media_genero >= 7.0 %}
+                                            <span class="badge bg-success fs-6">{{ genero.nota_media_genero }}</span>
+                                        {% elif genero.nota_media_genero >= 5.0 %}
+                                            <span class="badge bg-warning text-dark fs-6">{{ genero.nota_media_genero }}</span>
+                                        {% else %}
+                                            <span class="badge bg-danger fs-6">{{ genero.nota_media_genero }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary">{{ genero.total_avaliacoes }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-info">{{ genero.usuarios_avaliaram }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-secondary">{{ genero.filmes_avaliados }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">{{ genero.nota_minima }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">{{ genero.nota_maxima }}</span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <div class="card border-success">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0"><i class="fas fa-crown me-2"></i>Gênero Mais Bem Avaliado</h6>
+                                </div>
+                                <div class="card-body">
+                                    {% set melhor_genero = generos[0] %}
+                                    <h5 class="text-success">{{ melhor_genero.genero }}</h5>
+                                    <p class="mb-1">Nota: <strong>{{ melhor_genero.nota_media_genero }}</strong></p>
+                                    <p class="mb-0">{{ melhor_genero.total_avaliacoes }} avaliações</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-primary">
+                                <div class="card-header bg-primary text-white">
+                                    <h6 class="mb-0"><i class="fas fa-fire me-2"></i>Gênero Mais Popular</h6>
+                                </div>
+                                <div class="card-body">
+                                    {% set mais_popular = generos|sort(attribute='total_avaliacoes', reverse=true)|first %}
+                                    <h5 class="text-primary">{{ mais_popular.genero }}</h5>
+                                    <p class="mb-1"><strong>{{ mais_popular.total_avaliacoes }}</strong> avaliações</p>
+                                    <p class="mb-0">Nota: {{ mais_popular.nota_media_genero }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-info">
+                                <div class="card-header bg-info text-white">
+                                    <h6 class="mb-0"><i class="fas fa-users me-2"></i>Maior Engajamento</h6>
+                                </div>
+                                <div class="card-body">
+                                    {% set mais_engajado = generos|sort(attribute='usuarios_avaliaram', reverse=true)|first %}
+                                    <h5 class="text-info">{{ mais_engajado.genero }}</h5>
+                                    <p class="mb-1"><strong>{{ mais_engajado.usuarios_avaliaram }}</strong> usuários</p>
+                                    <p class="mb-0">{{ mais_engajado.filmes_avaliados }} filmes</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-warning">
+                                <div class="card-header bg-warning text-dark">
+                                    <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Estatísticas Gerais</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-1">Total gêneros: <strong>{{ generos|length }}</strong></p>
+                                    <p class="mb-1">Total avaliações: <strong>{{ generos|sum(attribute='total_avaliacoes') }}</strong></p>
+                                    <p class="mb-0">Média geral: <strong>{{ "%.2f"|format(generos|sum(attribute='nota_media_genero')/generos|length) }}</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card border-secondary">
+                                <div class="card-header bg-secondary text-white">
+                                    <h6 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Distribuição de Qualidade</h6>
+                                </div>
+                                <div class="card-body">
+                                    {% set excelentes = generos|selectattr('nota_media_genero', '>=', 7.0)|list|length %}
+                                    {% set bons = generos|selectattr('nota_media_genero', '>=', 5.0)|selectattr('nota_media_genero', '<', 7.0)|list|length %}
+                                    {% set ruins = generos|selectattr('nota_media_genero', '<', 5.0)|list|length %}
+                                    <ul class="list-unstyled mb-0">
+                                        <li><span class="badge bg-success me-2">Excelentes (≥7.0)</span> {{ excelentes }} gêneros</li>
+                                        <li><span class="badge bg-warning text-dark me-2">Bons (5.0-6.9)</span> {{ bons }} gêneros</li>
+                                        <li><span class="badge bg-danger me-2">Ruins (<5.0)</span> {{ ruins }} gêneros</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-info">
+                                <h6><i class="fas fa-lightbulb me-2"></i>Insights de Gênero</h6>
+                                <ul class="mb-0">
+                                    <li><strong>Preferências do Público:</strong> Identifica gêneros mais apreciados</li>
+                                    <li><strong>Amplitude de Notas:</strong> Mostra variação de qualidade por categoria</li>
+                                    <li><strong>Engajamento:</strong> Relaciona popularidade com qualidade</li>
+                                    <li><strong>Tendências:</strong> Útil para produtores e distribuidores</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning">
+                        <h5><i class="fas fa-exclamation-triangle me-2"></i>Nenhum dado encontrado</h5>
+                        <p class="mb-0">Não há dados suficientes para gerar esta análise. Verifique se existem filmes e avaliações no sistema.</p>
+                    </div>
+                {% endif %}
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <a href="{{ url_for('data_marts') }}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-1"></i>Voltar aos Data Marts
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

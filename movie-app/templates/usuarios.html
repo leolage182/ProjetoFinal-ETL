@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Usuários - Movie Rating{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">
+                    <i class="fas fa-users me-2"></i>Usuários Cadastrados
+                </h3>
+                <a href="{{ url_for('cadastrar_usuario') }}" class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Novo Usuário
+                </a>
+            </div>
+            <div class="card-body">
+                {% if usuarios %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th><i class="fas fa-hashtag me-1"></i>ID</th>
+                                    <th><i class="fas fa-user me-1"></i>Nome</th>
+                                    <th><i class="fas fa-envelope me-1"></i>Email</th>
+                                    <th><i class="fas fa-venus-mars me-1"></i>Gênero</th>
+                                    <th><i class="fas fa-globe me-1"></i>País</th>
+                                    <th><i class="fas fa-cogs me-1"></i>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for usuario in usuarios %}
+                                <tr>
+                                    <td>{{ usuario.id }}</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar-circle me-2">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            {{ usuario.nome }}
+                                        </div>
+                                    </td>
+                                    <td>{{ usuario.email }}</td>
+                                    <td>
+                                        <span class="badge bg-info">{{ usuario.genero }}</span>
+                                    </td>
+                                    <td>
+                                        <i class="fas fa-flag me-1"></i>{{ usuario.pais }}
+                                    </td>
+                                    <td>
+                                        <a href="{{ url_for('filmes') }}" class="btn btn-sm btn-outline-primary" 
+                                           title="Ver filmes para avaliar">
+                                            <i class="fas fa-star"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Total de usuários cadastrados: <strong>{{ usuarios|length }}</strong>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-users fa-4x text-muted mb-3"></i>
+                        <h4 class="text-muted">Nenhum usuário cadastrado</h4>
+                        <p class="text-muted">Comece cadastrando o primeiro usuário do sistema.</p>
+                        <a href="{{ url_for('cadastrar_usuario') }}" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Cadastrar Primeiro Usuário
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<style>
+.avatar-circle {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+}
+</style>
+{% endblock %}

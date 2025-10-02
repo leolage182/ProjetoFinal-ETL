@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}Data Marts - Movie Rating App{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">
+                    <i class="fas fa-chart-bar me-2"></i>Data Marts - Análises de Dados
+                </h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">Explore insights e análises dos dados de filmes e avaliações através dos nossos data marts especializados.</p>
+                
+                <div class="row g-4 mt-3">
+                    <!-- Avaliações por País -->
+                    <div class="col-md-6">
+                        <div class="card h-100 border-success">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-globe-americas text-success" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="card-title text-success">Avaliações por País</h5>
+                                <p class="card-text">Análise do número de avaliações e notas médias por país dos usuários.</p>
+                                <a href="{{ url_for('avaliacoes_por_pais') }}" class="btn btn-success">
+                                    <i class="fas fa-eye me-1"></i>Visualizar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nota Média por Gênero -->
+                    <div class="col-md-6">
+                        <div class="card h-100 border-dark">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-chart-line text-dark" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="card-title text-dark">Nota Média por Gênero</h5>
+                                <p class="card-text">Estatísticas completas de avaliações por gênero cinematográfico.</p>
+                                <a href="{{ url_for('nota_media_por_genero') }}" class="btn btn-dark">
+                                    <i class="fas fa-eye me-1"></i>Visualizar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mt-4">
+                    <!-- Top Filmes por Gênero -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-trophy text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="card-title text-primary">Top Filmes por Gênero</h5>
+                                <p class="card-text">Descubra os 10 filmes mais bem avaliados em cada gênero cinematográfico.</p>
+                                <a href="{{ url_for('top_filmes_por_genero') }}" class="btn btn-primary">
+                                    <i class="fas fa-eye me-1"></i>Visualizar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Piores Filmes por Gênero -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-warning">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-thumbs-down text-warning" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="card-title text-warning">Piores Filmes por Gênero</h5>
+                                <p class="card-text">Veja os 10 filmes com as piores avaliações em cada gênero.</p>
+                                <a href="{{ url_for('piores_filmes_por_genero') }}" class="btn btn-warning">
+                                    <i class="fas fa-eye me-1"></i>Visualizar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top 5 Filmes Odiados -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-danger">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-thumbs-down text-danger" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="card-title text-danger">Top 5 Filmes Odiados</h5>
+                                <p class="card-text">Os 5 filmes mais odiados por gênero com análise detalhada.</p>
+                                <a href="{{ url_for('top_filmes_odiados') }}" class="btn btn-danger">
+                                    <i class="fas fa-eye me-1"></i>Visualizar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mt-4">
+                    <!-- Top Usuários Avaliadores -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-info">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-users text-info" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="card-title text-info">Top Usuários Avaliadores</h5>
+                                <p class="card-text">Conheça os 5 usuários mais ativos em avaliações de filmes.</p>
+                                <a href="{{ url_for('top_usuarios_avaliacoes') }}" class="btn btn-info">
+                                    <i class="fas fa-eye me-1"></i>Visualizar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top 5 Filmes Populares -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-star text-secondary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="card-title text-secondary">Top 5 Filmes Populares</h5>
+                                <p class="card-text">Os 5 filmes mais populares por gênero com análise detalhada.</p>
+                                <a href="{{ url_for('top_filmes_populares') }}" class="btn btn-secondary">
+                                    <i class="fas fa-eye me-1"></i>Visualizar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filmes Avaliados por Usuário -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-success">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="fas fa-film text-success" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5 class="card-title text-success">Filmes Avaliados por Usuário</h5>
+                                <p class="card-text">Quantos filmes únicos cada usuário top avaliou no sistema.</p>
+                                <a href="{{ url_for('numero_filmes_avaliados') }}" class="btn btn-success">
+                                    <i class="fas fa-eye me-1"></i>Visualizar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            <h6><i class="fas fa-info-circle me-2"></i>Sobre os Data Marts</h6>
+                            <p class="mb-0">
+                                Os data marts são views especializadas que agregam e organizam os dados para facilitar análises específicas. 
+                                Eles são atualizados automaticamente conforme novas avaliações são adicionadas ao sistema.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

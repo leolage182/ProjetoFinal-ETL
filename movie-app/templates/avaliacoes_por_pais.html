@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Avaliações por País - Movie Rating App{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h2 class="mb-0">
+                    <i class="fas fa-globe-americas me-2"></i>Número de Avaliações por País
+                </h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">Data Mart que analisa o comportamento de avaliação dos usuários por país de origem.</p>
+                
+                <!-- Consulta SQL -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card bg-light">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-code me-2"></i>Consulta SQL Utilizada</h5>
+                            </div>
+                            <div class="card-body">
+                                <pre class="bg-dark text-light p-3 rounded"><code>{{ query_sql }}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resultados -->
+                {% if paises %}
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-success">
+                                <tr>
+                                    <th><i class="fas fa-flag me-1"></i>País</th>
+                                    <th><i class="fas fa-star me-1"></i>Total Avaliações</th>
+                                    <th><i class="fas fa-users me-1"></i>Total Usuários</th>
+                                    <th><i class="fas fa-chart-line me-1"></i>Nota Média do País</th>
+                                    <th><i class="fas fa-calendar me-1"></i>Primeira Avaliação</th>
+                                    <th><i class="fas fa-calendar-check me-1"></i>Última Avaliação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for pais in paises %}
+                                <tr>
+                                    <td>
+                                        <strong>{{ pais.pais }}</strong>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary">{{ pais.total_avaliacoes }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-info">{{ pais.total_usuarios }}</span>
+                                    </td>
+                                    <td>
+                                        {% if pais.nota_media_pais >= 7.0 %}
+                                            <span class="badge bg-success">{{ pais.nota_media_pais }}</span>
+                                        {% elif pais.nota_media_pais >= 5.0 %}
+                                            <span class="badge bg-warning text-dark">{{ pais.nota_media_pais }}</span>
+                                        {% else %}
+                                            <span class="badge bg-danger">{{ pais.nota_media_pais }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <small>{{ pais.primeira_avaliacao.strftime('%d/%m/%Y') if pais.primeira_avaliacao }}</small>
+                                    </td>
+                                    <td>
+                                        <small>{{ pais.ultima_avaliacao.strftime('%d/%m/%Y') if pais.ultima_avaliacao }}</small>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <div class="card border-primary">
+                                <div class="card-header bg-primary text-white">
+                                    <h6 class="mb-0"><i class="fas fa-trophy me-2"></i>País Mais Ativo</h6>
+                                </div>
+                                <div class="card-body">
+                                    {% set pais_mais_ativo = paises[0] %}
+                                    <h5 class="text-primary">{{ pais_mais_ativo.pais }}</h5>
+                                    <p class="mb-1"><strong>{{ pais_mais_ativo.total_avaliacoes }}</strong> avaliações</p>
+                                    <p class="mb-0"><strong>{{ pais_mais_ativo.total_usuarios }}</strong> usuários</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card border-success">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0"><i class="fas fa-star me-2"></i>Maior Nota Média</h6>
+                                </div>
+                                <div class="card-body">
+                                    {% set pais_melhor_nota = paises|sort(attribute='nota_media_pais', reverse=true)|first %}
+                                    <h5 class="text-success">{{ pais_melhor_nota.pais }}</h5>
+                                    <p class="mb-1">Nota: <strong>{{ pais_melhor_nota.nota_media_pais }}</strong></p>
+                                    <p class="mb-0">{{ pais_melhor_nota.total_avaliacoes }} avaliações</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card border-info">
+                                <div class="card-header bg-info text-white">
+                                    <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Estatísticas Gerais</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-1">Total de países: <strong>{{ paises|length }}</strong></p>
+                                    <p class="mb-1">Total de avaliações: <strong>{{ paises|sum(attribute='total_avaliacoes') }}</strong></p>
+                                    <p class="mb-0">Total de usuários: <strong>{{ paises|sum(attribute='total_usuarios') }}</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="alert alert-info">
+                                <h6><i class="fas fa-lightbulb me-2"></i>Insights Geográficos</h6>
+                                <ul class="mb-0">
+                                    <li><strong>Diversidade Cultural:</strong> Análise de preferências cinematográficas por região</li>
+                                    <li><strong>Engajamento Regional:</strong> Identificação de mercados mais ativos</li>
+                                    <li><strong>Padrões de Avaliação:</strong> Diferenças culturais na forma de avaliar filmes</li>
+                                    <li><strong>Oportunidades de Expansão:</strong> Países com potencial para crescimento</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning">
+                        <h5><i class="fas fa-exclamation-triangle me-2"></i>Nenhum dado encontrado</h5>
+                        <p class="mb-0">Não há dados suficientes para gerar esta análise. Verifique se existem usuários e avaliações no sistema.</p>
+                    </div>
+                {% endif %}
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <a href="{{ url_for('data_marts') }}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-1"></i>Voltar aos Data Marts
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

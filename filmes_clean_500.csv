@@ -1,0 +1,591 @@
+titulo,ano_lancamento,genero,nota_imdb
+O Senhor dos Anéis: A Sociedade do Anel,2001,Fantasia,8.8
+Matrix,1999,Ficção Científica,8.7
+Clube da Luta,1999,Drama,8.8
+Titanic,1997,Romance,0.0
+Avatar,2009,Ficção Científica,7.8
+Cidade de Deus,2002,Drama,8.6
+Interestelar,2014,Ficção Científica,8.6
+Pulp Fiction,1994,Crime,8.9
+O Poderoso Chefão,1972,Crime,9.2
+Forrest Gump,1994,Drama,8.8
+O Cavaleiro das Trevas,2008,Ação,9.0
+Gladiador,2000,Ação,8.5
+A Lista de Schindler,1993,Drama,8.9
+Inception,2010,Ficção Científica,8.8
+Parasita,2019,Thriller,8.6
+Coringa,2019,Drama,8.4
+Vingadores: Ultimato,2019,Ação,8.4
+Star Wars: Uma Nova Esperança,1977,Ficção Científica,8.6
+E.T. - O Extraterrestre,1982,Ficção Científica,7.8
+Jurassic Park,1993,Aventura,8.1
+Tubarão,1975,Thriller,8.0
+Rocky,1976,Drama,8.1
+Taxi Driver,1976,Drama,8.3
+Apocalypse Now,1979,Guerra,8.4
+Casablanca,1942,Romance,8.5
+Cidadão Kane,1941,Drama,8.3
+Psicose,1960,Thriller,8.5
+Vertigo,1958,Thriller,8.3
+Cantando na Chuva,1952,Musical,8.3
+Lawrence da Arábia,1962,Aventura,8.3
+O Mágico de Oz,1939,Fantasia,8.0
+Sunset Boulevard,1950,Drama,8.4
+A Ponte do Rio Kwai,1957,Guerra,8.1
+Alguns Gostam Quente,1959,Comédia,8.2
+2001: Uma Odisseia no Espaço,1968,Ficção Científica,8.3
+O Apartamento,1960,Comédia,8.3
+Dr. Strangelove,1964,Comédia,8.4
+O Tesouro de Sierra Madre,1948,Aventura,8.2
+Chinatown,1974,Thriller,8.2
+Sindicato de Ladrões,1954,Drama,8.1
+Raging Bull,1980,Drama,8.2
+O Terceiro Homem,1949,Thriller,8.1
+Ikiru,1952,Drama,8.3
+Os Sete Samurais,1954,Ação,8.6
+Ladrões de Bicicleta,1948,Drama,8.3
+A Grande Ilusão,1937,Guerra,8.1
+Cidade Perdida,1927,Drama,8.2
+O Encouraçado Potemkin,1925,Drama,8.0
+Metrópolis,1927,Ficção Científica,8.3
+O Gabinete do Dr. Caligari,1920,Horror,8.0
+Nosferatu,1922,Horror,7.9
+Vampyr,1932,Horror,7.5
+M - O Vampiro de Düsseldorf,1931,Thriller,8.3
+As Regras do Jogo,1939,Comédia,8.0
+Atalante,1934,Romance,7.7
+Amarcord,1973,Comédia,7.9
+8½,1963,Drama,8.0
+La Dolce Vita,1960,Drama,8.0
+A Estrada,1954,Drama,8.0
+Umberto D,1952,Drama,8.2
+Milagre em Milão,1951,Fantasia,7.7
+Alemanha Ano Zero,1948,Drama,7.4
+Paisà,1946,Guerra,7.6
+O Eclipse,1962,Drama,7.7
+A Aventura,1960,Drama,7.8
+A Noite,1961,Drama,8.0
+Blow-Up,1966,Thriller,7.5
+Zabriskie Point,1970,Drama,7.0
+O Passageiro,1975,Drama,7.6
+Persona,1966,Drama,8.1
+O Sétimo Selo,1957,Drama,8.2
+Morangos Silvestres,1957,Drama,8.2
+Gritos e Sussurros,1972,Drama,7.9
+Fanny e Alexander,1982,Drama,8.1
+Cenas de um Casamento,1973,Drama,8.3
+Através de um Espelho,1961,Drama,7.8
+O Silêncio,1963,Drama,7.9
+A Hora do Lobo,1968,Horror,7.6
+A Vergonha,1968,Drama,7.8
+A Paixão de Anna,1969,Drama,7.7
+Sonata de Outono,1978,Drama,8.1
+De la Vida de las Marionetas,1980,Drama,7.3
+Saraband,2003,Drama,7.3
+Os Quatrocentos Golpes,1959,Drama,8.1
+Jules e Jim,1962,Romance,7.7
+Shoot the Piano Player,1960,Crime,7.4
+A Noiva Estava de Preto,1968,Thriller,7.2
+Fahrenheit 451,1966,Ficção Científica,7.2
+A Sereia do Mississippi,1969,Romance,6.9
+Domicílio Conjugal,1970,Comédia,7.5
+O Último Metrô,1980,Drama,7.4
+A Mulher do Lado,1981,Drama,7.3
+Finalmente Domingo!,1983,Thriller,7.1
+Acossado,1960,Crime,7.7
+Viver a Vida,1962,Drama,7.8
+Uma Mulher é uma Mulher,1961,Comédia,7.3
+Alphaville,1965,Ficção Científica,7.0
+Pierrot le Fou,1965,Crime,7.5
+Masculino Feminino,1966,Romance,7.4
+Made in U.S.A.,1966,Crime,6.6
+Duas ou Três Coisas que Eu Sei Dela,1967,Drama,6.6
+Weekend,1967,Comédia,7.0
+Sympathy for the Devil,1968,Documentário,6.2
+Vento do Leste,1970,Drama,6.0
+Tudo Vai Bem,1972,Drama,6.6
+Número Dois,1975,Drama,6.1
+Ici et Ailleurs,1976,Documentário,6.7
+Comment Ça Va,1976,Drama,6.0
+France/Tour/Détour/Deux/Enfants,1978,Documentário,7.1
+Sauve Qui Peut (La Vie),1980,Drama,6.8
+Paixão,1982,Drama,6.2
+Prénom Carmen,1983,Crime,6.1
+Je Vous Salue Marie,1985,Drama,6.4
+Detective,1985,Crime,5.9
+Grandeur et Décadence,1986,Comédia,6.0
+Soigne ta Droite,1987,Comédia,5.8
+King Lear,1987,Drama,5.6
+Nouvelle Vague,1990,Drama,6.8
+Alemanha Nove Zero,1991,Drama,6.2
+Hélas pour Moi,1993,Drama,6.1
+JLG/JLG - Autorretrato,1995,Documentário,7.1
+For Ever Mozart,1996,Comédia,6.2
+Histoire(s) du Cinéma,1998,Documentário,8.1
+Elogio ao Amor,2001,Drama,6.5
+Notre Musique,2004,Drama,6.9
+Filme Socialismo,2010,Drama,5.7
+Adeus à Linguagem,2014,Drama,5.9
+O Livro de Imagem,2018,Drama,6.1
+Hiroshima Meu Amor,1959,Romance,7.9
+O Ano Passado em Marienbad,1961,Drama,7.7
+Muriel,1963,Drama,7.4
+A Guerra Acabou,1966,Drama,7.4
+Je t'aime je t'aime,1968,Ficção Científica,7.1
+Stavisky,1974,Drama,6.8
+Providence,1977,Drama,7.8
+Meu Tio da América,1980,Drama,7.7
+A Vida é um Romance,1983,Comédia,6.2
+Mélo,1986,Drama,7.1
+I Want to Go Home,1989,Comédia,6.1
+Smoking/No Smoking,1993,Comédia,7.4
+On Connaît la Chanson,1997,Comédia,7.2
+Pas sur la Bouche,2003,Musical,6.4
+Cœurs,2006,Romance,6.9
+Vous n'avez Encore Rien Vu,2012,Drama,6.4
+Aimer Boire et Chanter,2014,Drama,6.2
+Playtime,1967,Comédia,7.8
+Trafic,1971,Comédia,7.0
+As Férias do Sr. Hulot,1953,Comédia,7.4
+Meu Tio,1958,Comédia,7.7
+Jour de Fête,1949,Comédia,7.1
+Parade,1974,Comédia,6.0
+Curso de Férias,1967,Comédia,6.8
+Tati Story,2002,Documentário,7.0
+Boudu Salvo das Águas,1932,Comédia,7.3
+O Crime do Sr. Lange,1936,Crime,7.6
+Uma Partida de Campo,1936,Romance,7.6
+A Besta Humana,1938,Crime,7.6
+A Marselhesa,1938,Drama,6.9
+Elena e os Homens,1956,Romance,6.3
+O Testamento do Dr. Cordelier,1959,Drama,6.6
+O Almoço na Relva,1959,Romance,6.5
+O Cabo Cabo,1962,Comédia,6.7
+O Pequeno Teatro de Jean Renoir,1970,Drama,7.0
+Roma,1972,Drama,7.3
+Satyricon,1969,Drama,6.9
+Julieta dos Espíritos,1965,Fantasia,7.5
+As Noites de Cabíria,1957,Drama,8.1
+I Vitelloni,1953,Comédia,7.9
+O Sheik Branco,1952,Comédia,7.2
+Luzes da Ribalta,1952,Drama,8.1
+Amores de uma Loira,1965,Comédia,7.3
+O Baile dos Bombeiros,1967,Comédia,7.3
+Um Amor na Tarde,1988,Romance,7.3
+Valmont,1989,Drama,7.0
+Amadeus,1984,Drama,8.3
+Hair,1979,Musical,7.6
+Ragtime,1981,Drama,7.3
+The People vs. Larry Flynt,1996,Drama,7.3
+Man on the Moon,1999,Comédia,7.4
+Um Estranho no Ninho,1975,Drama,8.7
+Carrie a Estranha,1976,Horror,7.4
+O Iluminado,1980,Horror,8.4
+Scarface,1983,Crime,8.3
+Nascido em 4 de Julho,1989,Drama,7.2
+JFK,1991,Drama,8.0
+Assassinos por Natureza,1994,Crime,7.3
+Nixon,1995,Drama,7.1
+U Turn,1997,Crime,6.7
+Qualquer Domingo,1999,Drama,6.9
+Alexander,2004,Drama,5.6
+World Trade Center,2006,Drama,6.0
+Platoon,1986,Guerra,8.1
+Wall Street,1987,Drama,7.4
+Talk Radio,1988,Drama,7.0
+The Doors,1991,Drama,7.2
+Céu e Inferno,1993,Drama,5.8
+Salvador,1986,Drama,7.4
+Conan o Bárbaro,1982,Fantasia,6.9
+O Exterminador do Futuro,1984,Ficção Científica,8.0
+Aliens,1986,Ficção Científica,8.3
+O Abismo,1989,Ficção Científica,7.5
+O Exterminador do Futuro 2,1991,Ficção Científica,8.5
+Mentiras Verdadeiras,1994,Ação,7.2
+Alita: Anjo de Combate,2019,Ficção Científica,7.3
+O Exterminador do Futuro: Destino Sombrio,2019,Ficção Científica,6.2
+Piranha 2,1981,Horror,3.8
+Xenogênesis,1978,Ficção Científica,6.4
+Rambo,1982,Ação,7.7
+Rambo II,1985,Ação,6.5
+Rambo III,1988,Ação,5.8
+Rocky II,1979,Drama,7.3
+Rocky III,1982,Drama,6.8
+Rocky IV,1985,Drama,6.9
+Rocky V,1990,Drama,5.3
+Rocky Balboa,2006,Drama,7.1
+Creed,2015,Drama,7.6
+Creed II,2018,Drama,7.1
+Creed III,2023,Drama,6.7
+O Primeiro Sangue,1982,Ação,7.7
+Cobra,1986,Ação,5.8
+Tango & Cash,1989,Ação,6.4
+Cliffhanger,1993,Ação,6.4
+Demolidor,1993,Ação,6.7
+O Especialista,1994,Ação,5.6
+Juiz Dredd,1995,Ficção Científica,5.6
+Assassinos,1995,Ação,6.3
+Daylight,1996,Ação,5.9
+Copland,1997,Crime,7.0
+Antz,1998,Animação,6.5
+Driven,2001,Ação,4.6
+Avenging Angelo,2002,Comédia,5.1
+Shade,2003,Crime,6.3
+Spy Kids 3-D,2003,Aventura,4.3
+The Expendables,2010,Ação,6.4
+The Expendables 2,2012,Ação,6.6
+Escape Plan,2013,Ação,6.7
+The Expendables 3,2014,Ação,6.1
+Rambo: Last Blood,2019,Ação,6.1
+Samaritan,2022,Ação,5.7
+Expend4bles,2023,Ação,4.8
+Predador,1987,Ficção Científica,7.8
+Comando para Matar,1985,Ação,6.7
+Conan o Destruidor,1984,Fantasia,5.9
+Pumping Iron,1977,Documentário,7.3
+Stay Hungry,1976,Drama,5.6
+The Villain,1979,Comédia,5.1
+Scavenger Hunt,1979,Comédia,5.7
+The Jayne Mansfield Story,1980,Drama,5.2
+Red Sonja,1985,Fantasia,5.1
+Raw Deal,1986,Ação,5.6
+The Running Man,1987,Ficção Científica,6.7
+Red Heat,1988,Ação,6.1
+Twins,1988,Comédia,6.1
+Total Recall,1990,Ficção Científica,7.5
+Kindergarten Cop,1990,Comédia,6.2
+Last Action Hero,1993,Ação,6.4
+Junior,1994,Comédia,4.7
+Eraser,1996,Ação,6.1
+Jingle All the Way,1996,Comédia,5.7
+Batman & Robin,1997,Ação,3.8
+End of Days,1999,Ação,5.8
+The 6th Day,2000,Ficção Científica,5.9
+Collateral Damage,2002,Ação,5.5
+Around the World in 80 Days,2004,Aventura,5.9
+The Last Stand,2013,Ação,6.3
+Sabotage,2014,Ação,5.7
+Maggie,2015,Drama,5.6
+Terminator Genisys,2015,Ficção Científica,6.3
+Aftermath,2017,Drama,5.7
+Killing Gunther,2017,Comédia,4.8
+Terminator: Dark Fate,2019,Ficção Científica,6.2
+Kung Fury 2,2022,Comédia,5.3
+FUBAR,2023,Ação,6.5
+Indiana Jones e os Caçadores da Arca Perdida,1981,Aventura,8.4
+Indiana Jones e o Templo da Perdição,1984,Aventura,7.5
+Indiana Jones e a Última Cruzada,1989,Aventura,8.2
+Indiana Jones e o Reino da Caveira de Cristal,2008,Aventura,6.1
+Indiana Jones e a Relíquia do Destino,2023,Aventura,6.5
+Contatos Imediatos do Terceiro Grau,1977,Ficção Científica,7.6
+1941,1979,Comédia,5.8
+Em Busca da Arca Perdida,1981,Aventura,8.4
+Poltergeist,1982,Horror,7.3
+Crepúsculo dos Deuses,1993,Drama,8.7
+O Mundo Perdido: Jurassic Park,1997,Aventura,6.6
+Amistad,1997,Drama,7.3
+O Resgate do Soldado Ryan,1998,Guerra,8.6
+A.I. Inteligência Artificial,2001,Ficção Científica,7.2
+Minority Report,2002,Ficção Científica,7.6
+Prenda-me Se For Capaz,2002,Crime,8.1
+O Terminal,2004,Comédia,7.4
+Guerra dos Mundos,2005,Ficção Científica,6.5
+Munique,2005,Drama,7.5
+As Aventuras de Tintim,2011,Aventura,7.3
+Cavalo de Guerra,2011,Guerra,7.2
+Lincoln,2012,Drama,7.3
+Ponte dos Espiões,2015,Drama,7.6
+BFG: O Bom Gigante Amigo,2016,Fantasia,6.3
+Jogador Nº 1,2018,Ficção Científica,7.4
+Histórias Assombradas para Contar no Escuro,2019,Horror,6.2
+West Side Story,2021,Musical,7.1
+Os Fabelmans,2022,Drama,7.5
+Duna,1984,Ficção Científica,6.3
+O Elefante Homem,1980,Drama,8.1
+Veludo Azul,1986,Crime,7.7
+Coração Selvagem,1990,Crime,7.2
+Twin Peaks: Fire Walk with Me,1992,Horror,7.3
+Estrada Perdida,1997,Thriller,7.6
+Uma História Simples,1999,Drama,8.0
+Mulholland Drive,2001,Thriller,7.9
+Império dos Sonhos,2006,Documentário,8.2
+Inland Empire,2006,Thriller,6.9
+Twin Peaks: The Return,2017,Drama,8.5
+Eraserhead,1977,Horror,7.3
+The Grandmother,1970,Drama,7.3
+The Alphabet,1968,Animação,6.8
+Six Men Getting Sick,1967,Animação,6.1
+What Did Jack Do?,2017,Comédia,6.4
+Wisteria,2008,Drama,6.7
+Boat,2007,Animação,6.5
+Darkened Room,2002,Drama,6.3
+Rabbits,2002,Horror,6.8
+Dumbland,2002,Animação,7.1
+The Cowboy and the Frenchman,1988,Comédia,6.2
+Industrial Symphony No. 1,1990,Musical,6.9
+Hotel Room,1993,Drama,7.8
+Lumière and Company,1995,Documentário,6.7
+Premonitions Following an Evil Deed,1995,Drama,7.1
+The Straight Story,1999,Drama,8.0
+Blade Runner,1982,Ficção Científica,8.1
+Blade Runner 2049,2017,Ficção Científica,8.0
+Mad Max: Estrada da Fúria,2015,Ação,8.1
+Mad Max,1979,Ação,6.8
+Mad Max 2: A Caçada Continua,1981,Ação,7.6
+Mad Max: Além da Cúpula do Trovão,1985,Ação,6.3
+Furiosa: Uma Saga Mad Max,2024,Ação,7.5
+Braveheart,1995,Drama,8.3
+O Patriota,2000,Drama,7.2
+Apocalypto,2006,Aventura,7.8
+Hacksaw Ridge,2016,Guerra,8.1
+Paixão de Cristo,2004,Drama,7.2
+Os Miseráveis,2012,Musical,7.5
+Mamma Mia!,2008,Musical,6.4
+Chicago,2002,Musical,7.1
+Moulin Rouge,2001,Musical,7.6
+La La Land,2016,Musical,8.0
+O Rei Leão,1994,Animação,8.5
+Toy Story,1995,Animação,8.3
+Procurando Nemo,2003,Animação,8.2
+WALL-E,2008,Animação,8.4
+Up - Altas Aventuras,2009,Animação,8.3
+Frozen,2013,Animação,7.4
+Moana,2016,Animação,7.6
+Coco,2017,Animação,8.4
+Soul,2020,Animação,8.0
+Luca,2021,Animação,7.4
+Encanto,2021,Animação,7.2
+Turning Red,2022,Animação,7.0
+Lightyear,2022,Animação,5.1
+Elementos,2023,Animação,7.0
+Shrek,2001,Animação,7.9
+Shrek 2,2004,Animação,7.3
+Madagascar,2005,Animação,6.9
+Como Treinar o Seu Dragão,2010,Animação,8.1
+Kung Fu Panda,2008,Animação,7.6
+Os Incríveis,2004,Animação,8.0
+Monstros S.A.,2001,Animação,8.1
+Vida de Inseto,1998,Animação,7.2
+Ratatouille,2007,Animação,8.1
+Carros,2006,Animação,7.2
+Brave,2012,Animação,7.1
+Divertida Mente,2015,Animação,8.1
+Viva - A Vida é uma Festa,2017,Animação,8.4
+Onward,2020,Animação,7.4
+Red: Crescer é uma Fera,2022,Animação,7.0
+Strange World,2022,Animação,5.7
+Wish: O Poder dos Desejos,2023,Animação,5.7
+Spider-Man: No Aranhaverso,2018,Animação,8.4
+Spider-Man: Através do Aranhaverso,2023,Animação,8.7
+Os Vingadores,2012,Ação,8.0
+Capitão América: O Primeiro Vingador,2011,Ação,6.9
+Thor,2011,Ação,7.0
+Homem de Ferro,2008,Ação,7.9
+Homem de Ferro 2,2010,Ação,7.0
+Capitão América: O Soldado Invernal,2014,Ação,7.7
+Guardiões da Galáxia,2014,Ação,8.0
+Vingadores: Era de Ultron,2015,Ação,7.3
+Homem-Formiga,2015,Ação,7.3
+Capitão América: Guerra Civil,2016,Ação,7.8
+Doutor Estranho,2016,Ação,7.5
+Guardiões da Galáxia Vol. 2,2017,Ação,7.6
+Spider-Man: De Volta ao Lar,2017,Ação,7.4
+Thor: Ragnarok,2017,Ação,7.9
+Pantera Negra,2018,Ação,7.3
+Vingadores: Guerra Infinita,2018,Ação,8.4
+Homem-Formiga e a Vespa,2018,Ação,7.0
+Capitã Marvel,2019,Ação,6.8
+Spider-Man: Longe de Casa,2019,Ação,7.4
+Viúva Negra,2021,Ação,6.7
+Shang-Chi e a Lenda dos Dez Anéis,2021,Ação,7.4
+Eternos,2021,Ação,6.3
+Spider-Man: Sem Volta Para Casa,2021,Ação,8.2
+Doutor Estranho no Multiverso da Loucura,2022,Ação,6.9
+Thor: Amor e Trovão,2022,Ação,6.2
+Pantera Negra: Wakanda Para Sempre,2022,Ação,6.7
+Homem-Formiga e a Vespa: Quantumania,2023,Ação,6.0
+Guardiões da Galáxia Vol. 3,2023,Ação,8.0
+The Marvels,2023,Ação,5.5
+Batman Begins,2005,Ação,8.2
+O Cavaleiro das Trevas Ressurge,2012,Ação,8.4
+Superman,1978,Ação,7.4
+Superman II,1980,Ação,6.8
+Batman,1989,Ação,7.5
+Batman Returns,1992,Ação,7.0
+Batman Forever,1995,Ação,5.4
+Superman Returns,2006,Ação,6.0
+Homem de Aço,2013,Ação,7.1
+Batman vs Superman: A Origem da Justiça,2016,Ação,6.4
+Esquadrão Suicida,2016,Ação,5.9
+Mulher-Maravilha,2017,Ação,7.4
+Liga da Justiça,2017,Ação,6.1
+Aquaman,2018,Ação,6.8
+Shazam!,2019,Ação,7.0
+Aves de Rapina,2020,Ação,6.1
+Mulher-Maravilha 1984,2020,Ação,5.4
+Liga da Justiça de Zack Snyder,2021,Ação,8.0
+O Esquadrão Suicida,2021,Ação,7.2
+The Batman,2022,Ação,7.8
+Adão Negro,2022,Ação,6.2
+Shazam! Fúria dos Deuses,2023,Ação,5.9
+The Flash,2023,Ação,5.8
+Aquaman e o Reino Perdido,2023,Ação,5.7
+X-Men,2000,Ação,7.4
+X2: X-Men United,2003,Ação,7.5
+X-Men: O Confronto Final,2006,Ação,6.7
+X-Men Origens: Wolverine,2009,Ação,6.5
+X-Men: Primeira Classe,2011,Ação,7.7
+Wolverine: Imortal,2013,Ação,6.7
+X-Men: Dias de um Futuro Esquecido,2014,Ação,7.9
+Deadpool,2016,Ação,8.0
+X-Men: Apocalipse,2016,Ação,6.9
+Logan,2017,Ação,8.1
+Deadpool 2,2018,Ação,7.7
+X-Men: Fênix Negra,2019,Ação,5.7
+Os Novos Mutantes,2020,Ação,5.3
+Deadpool & Wolverine,2024,Ação,7.8
+Homem-Aranha,2002,Ação,7.4
+Homem-Aranha 2,2004,Ação,7.5
+Homem-Aranha 3,2007,Ação,6.3
+O Espetacular Homem-Aranha,2012,Ação,6.9
+O Espetacular Homem-Aranha 2,2014,Ação,6.6
+Venom,2018,Ação,6.6
+Venom: Tempo de Carnificina,2021,Ação,5.9
+Morbius,2022,Ação,5.1
+Madame Teia,2024,Ação,3.8
+Venom: A Última Dança,2024,Ação,6.2
+Transformers,2007,Ação,7.0
+Transformers: A Vingança dos Derrotados,2009,Ação,6.0
+Transformers: O Lado Oculto da Lua,2011,Ação,6.2
+Transformers: A Era da Extinção,2014,Ação,5.6
+Transformers: O Último Cavaleiro,2017,Ação,5.2
+Bumblebee,2018,Ação,6.7
+Transformers: O Despertar das Feras,2023,Ação,6.0
+Velozes e Furiosos,2001,Ação,6.8
+Velozes e Furiosos 2,2003,Ação,5.9
+Velozes e Furiosos: Desafio em Tóquio,2006,Ação,6.0
+Velozes e Furiosos 4,2009,Ação,6.5
+Velozes e Furiosos 5: Operação Rio,2011,Ação,7.3
+Velozes e Furiosos 6,2013,Ação,7.0
+Velozes e Furiosos 7,2015,Ação,7.1
+Velozes e Furiosos 8,2017,Ação,6.6
+Velozes e Furiosos: Hobbs & Shaw,2019,Ação,6.5
+Velozes e Furiosos 9,2021,Ação,5.2
+Velozes e Furiosos 10,2023,Ação,5.8
+Missão: Impossível,1996,Ação,7.1
+Missão: Impossível 2,2000,Ação,6.1
+Missão: Impossível 3,2006,Ação,6.9
+Missão: Impossível - Protocolo Fantasma,2011,Ação,7.4
+Missão: Impossível - Nação Secreta,2015,Ação,7.4
+Missão: Impossível - Efeito Fallout,2018,Ação,7.7
+Missão: Impossível - Acerto de Contas Parte 1,2023,Ação,7.7
+007 - Dr. No,1962,Ação,7.2
+007 - Contra Goldfinger,1964,Ação,7.7
+007 - Operação Trovão,1965,Ação,6.9
+007 - Com 007 Só Se Vive Duas Vezes,1967,Ação,6.8
+007 - A Serviço Secreto de Sua Majestade,1969,Ação,6.7
+007 - Os Diamantes São Eternos,1971,Ação,6.5
+007 - Viva e Deixe Morrer,1973,Ação,6.8
+007 - O Homem com a Pistola de Ouro,1974,Ação,6.7
+007 - O Espião Que Me Amava,1977,Ação,7.0
+007 - Moonraker,1979,Ação,6.2
+007 - Somente Para Seus Olhos,1981,Ação,6.7
+007 - Octopussy,1983,Ação,6.5
+007 - Na Mira dos Assassinos,1985,Ação,6.3
+007 - Marcado Para a Morte,1987,Ação,6.7
+007 - Goldeneye,1995,Ação,7.2
+007 - O Amanhã Nunca Morre,1997,Ação,6.5
+007 - O Mundo Não é o Bastante,1999,Ação,6.4
+007 - Um Novo Dia Para Morrer,2002,Ação,6.1
+007 - Cassino Royale,2006,Ação,8.0
+007 - Quantum of Solace,2008,Ação,6.6
+007 - Skyfall,2012,Ação,7.8
+007 - Spectre,2015,Ação,6.8
+007 - Sem Tempo Para Morrer,2021,Ação,7.3
+John Wick,2014,Ação,7.4
+John Wick: Um Novo Dia Para Matar,2017,Ação,7.4
+John Wick 3: Parabellum,2019,Ação,7.4
+John Wick 4: Baba Yaga,2023,Ação,7.7
+Duro de Matar,1988,Ação,8.2
+Duro de Matar 2,1990,Ação,7.2
+Duro de Matar 3: A Vingança,1995,Ação,7.6
+Duro de Matar 4.0,2007,Ação,7.1
+Duro de Matar: Um Bom Dia Para Morrer,2013,Ação,5.2
+Taken: Busca Implacável,2008,Ação,7.8
+Taken 2,2012,Ação,6.2
+Taken 3,2014,Ação,6.0
+O Protetor,2014,Ação,7.2
+O Protetor 2,2018,Ação,6.7
+O Protetor 3,2023,Ação,6.8
+Bourne: A Identidade,2002,Ação,7.9
+Bourne: A Supremacia,2004,Ação,7.7
+Bourne: O Ultimato,2007,Ação,8.0
+O Legado Bourne,2012,Ação,6.6
+Jason Bourne,2016,Ação,6.6
+Salt,2010,Ação,6.4
+Atômica,2017,Ação,6.7
+Anna,2019,Ação,6.6
+A Mulher Rei,2022,Ação,6.9
+Lara Croft: Tomb Raider,2001,Ação,5.8
+Lara Croft Tomb Raider: A Origem da Vida,2003,Ação,5.6
+Tomb Raider,2018,Ação,6.3
+Resident Evil,2002,Ação,6.7
+Resident Evil: Apocalipse,2004,Ação,6.1
+Resident Evil: Extinção,2007,Ação,6.2
+Resident Evil: Recomeço,2010,Ação,5.8
+Resident Evil: Retribuição,2012,Ação,5.3
+Resident Evil: O Capítulo Final,2016,Ação,5.5
+Resident Evil: Bem-Vindo a Raccoon City,2021,Ação,5.2
+Underworld,2003,Ação,7.0
+Underworld: Evolution,2006,Ação,6.7
+Underworld: A Rebelião dos Lycans,2009,Ação,6.5
+Underworld: Despertar,2012,Ação,6.3
+Underworld: Guerras de Sangue,2016,Ação,5.7
+Kill Bill: Volume 1,2003,Ação,8.2
+Kill Bill: Volume 2,2004,Ação,8.0
+Cães de Aluguel,1992,Crime,8.3
+Django Livre,2012,Western,8.4
+Bastardos Inglórios,2009,Guerra,8.3
+Era Uma Vez em Hollywood,2019,Drama,7.6
+Pulp Fiction: Tempo de Violência,1994,Crime,8.9
+Jackie Brown,1997,Crime,7.5
+À Prova de Morte,2007,Ação,7.0
+Os Oito Odiados,2015,Western,7.8
+Era Uma Vez no Oeste,1968,Western,8.5
+Por um Punhado de Dólares,1964,Western,7.9
+Por uns Dólares a Mais,1965,Western,8.2
+Três Homens em Conflito,1966,Western,8.8
+Imperdoável,1992,Western,8.2
+Dança com Lobos,1990,Western,8.0
+Tombstone,1993,Western,7.8
+Wyatt Earp,1994,Western,6.7
+Maverick,1994,Western,7.0
+Young Guns,1988,Western,6.9
+Young Guns II,1990,Western,6.4
+Silverado,1985,Western,7.2
+Pale Rider,1985,Western,7.3
+The Man from Snowy River,1982,Western,7.2
+Butch Cassidy,1969,Western,8.1
+Sundance Kid,1969,Western,8.1
+Cat Ballou,1965,Western,6.7
+The Magnificent Seven,1960,Western,7.7
+Os Sete Magníficos,2016,Western,6.9
+True Grit,1969,Western,7.4
+Garra de Ferro,2010,Western,7.6
+3:10 to Yuma,1957,Western,7.6
+Duelo em Yuma,2007,Western,7.7
+The Searchers,1956,Western,7.9
+Rio Bravo,1959,Western,8.0
+El Dorado,1966,Western,7.5
+Rio Lobo,1970,Western,6.7
+The Quiet Man,1952,Western,7.8
+She Wore a Yellow Ribbon,1949,Western,7.3
+Fort Apache,1948,Western,7.5
+The Horse Soldiers,1959,Western,7.1
+The Alamo,1960,Western,6.8
+How the West Was Won,1962,Western,7.1
+The Sons of Katie Elder,1965,Western,7.2
+The Cowboys,1972,Western,7.4
+Cahill U.S. Marshal,1973,Western,6.5
+Rooster Cogburn,1975,Western,6.9
+The Shootist,1976,Western,7.6

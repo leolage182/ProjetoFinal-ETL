@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+
+{% block title %}Avaliações - Movie Rating{% endblock %}
+
+{% block content %}
+<!-- Filtros de Avaliações -->
+{% if avaliacoes %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-filter me-2"></i>Filtrar Avaliações
+                </h5>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" id="searchMovie" class="form-control" 
+                               placeholder="Buscar por filme...">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" id="searchUser" class="form-control" 
+                               placeholder="Buscar por usuário...">
+                    </div>
+                    <div class="col-md-4">
+                        <select id="filterRating" class="form-select">
+                            <option value="">Todas as notas</option>
+                            <option value="9-10">Excelente (9-10)</option>
+                            <option value="7-8">Muito Bom (7-8)</option>
+                            <option value="5-6">Bom (5-6)</option>
+                            <option value="3-4">Regular (3-4)</option>
+                            <option value="0-2">Ruim (0-2)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">
+                    <i class="fas fa-star me-2"></i>Todas as Avaliações
+                </h3>
+                <a href="{{ url_for('filmes') }}" class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Nova Avaliação
+                </a>
+            </div>
+            <div class="card-body">
+                {% if avaliacoes %}
+                    <div class="row">
+                        {% for avaliacao in avaliacoes %}
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100 review-card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <h5 class="card-title mb-0">{{ avaliacao.filme_titulo }}</h5>
+                                        <div class="rating-badge">
+                                            <span class="badge bg-warning text-dark fs-6">
+                                                <i class="fas fa-star me-1"></i>{{ avaliacao.nota }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="user-info mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar-circle me-2">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <div>
+                                                <strong>{{ avaliacao.nome if avaliacao.nome else 'Usuário #' + avaliacao.user_id|string }}</strong>
+                                                <br>
+                                                <small class="text-muted">
+                                                    <i class="fas fa-calendar me-1"></i>{{ avaliacao.data_avaliacao }}
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    {% if avaliacao.comentario %}
+                                    <div class="comment-section">
+                                        <p class="card-text">
+                                            <i class="fas fa-quote-left text-muted me-2"></i>
+                                            {{ avaliacao.comentario }}
+                                            <i class="fas fa-quote-right text-muted ms-2"></i>
+                                        </p>
+                                    </div>
+                                    {% endif %}
+                                    
+                                    <div class="rating-stars">
+                                        {% set rating = avaliacao.nota %}
+                                        {% set full_stars = (rating // 1)|int %}
+                                        {% set has_half = (rating % 1) >= 0.5 %}
+                                        {% set empty_stars = 10 - full_stars - (1 if has_half else 0) %}
+                                        
+                                        <div class="star-display">
+                                            {% for i in range(full_stars) %}
+                                                <i class="fas fa-star text-warning"></i>
+                                            {% endfor %}
+                                            {% if has_half %}
+                                                <i class="fas fa-star-half-alt text-warning"></i>
+                                            {% endif %}
+                                            {% for i in range(empty_stars) %}
+                                                <i class="far fa-star text-warning"></i>
+                                            {% endfor %}
+                                            <span class="ms-2 text-muted">({{ rating }}/10)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="mt-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    Total de avaliações: <strong>{{ avaliacoes|length }}</strong>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                {% if avaliacoes %}
+                                    {% set total_rating = avaliacoes|sum(attribute='nota') %}
+                                    {% set avg_rating = (total_rating / avaliacoes|length)|round(1) %}
+                                    <div class="alert alert-success">
+                                        <i class="fas fa-chart-line me-2"></i>
+                                        Nota média geral: <strong>{{ avg_rating }}/10</strong>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-star fa-4x text-muted mb-3"></i>
+                        <h4 class="text-muted">Nenhuma avaliação encontrada</h4>
+                        <p class="text-muted">Seja o primeiro a avaliar um filme!</p>
+                        <a href="{{ url_for('filmes') }}" class="btn btn-primary">
+                            <i class="fas fa-star me-2"></i>Avaliar Filme
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<style>
+.review-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.avatar-circle {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+}
+
+.comment-section {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 4px solid #667eea;
+}
+
+.star-display {
+    font-size: 1.1em;
+}
+
+.rating-badge .badge {
+    font-size: 1em;
+    padding: 8px 12px;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchMovie = document.getElementById('searchMovie');
+    const searchUser = document.getElementById('searchUser');
+    const filterRating = document.getElementById('filterRating');
+
+    function filterReviews() {
+        const movieFilter = searchMovie ? searchMovie.value.toLowerCase() : '';
+        const userFilter = searchUser ? searchUser.value.toLowerCase() : '';
+        const ratingFilter = filterRating ? filterRating.value : '';
+
+        document.querySelectorAll('.review-card').forEach(card => {
+            const cardParent = card.parentElement;
+            const movieTitle = card.querySelector('.card-title').textContent.toLowerCase();
+            const userName = card.querySelector('.user-info strong').textContent.toLowerCase();
+            const rating = parseFloat(card.querySelector('.badge').textContent.replace('⭐', '').trim());
+
+            const movieMatch = movieTitle.includes(movieFilter);
+            const userMatch = userName.includes(userFilter);
+            
+            let ratingMatch = true;
+            if (ratingFilter) {
+                const [min, max] = ratingFilter.split('-').map(Number);
+                ratingMatch = rating >= min && rating <= max;
+            }
+
+            if (movieMatch && userMatch && ratingMatch) {
+                cardParent.style.display = 'block';
+            } else {
+                cardParent.style.display = 'none';
+            }
+        });
+    }
+
+    if (searchMovie) searchMovie.addEventListener('input', filterReviews);
+    if (searchUser) searchUser.addEventListener('input', filterReviews);
+    if (filterRating) filterRating.addEventListener('change', filterReviews);
+});
+</script>
+{% endblock %}

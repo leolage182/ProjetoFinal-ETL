@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}Filmes Avaliados por Usuário - Movie Rating App{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">
+                    <i class="fas fa-film me-2"></i>Número de Filmes Avaliados por Usuário Top
+                </h2>
+                <a href="{{ url_for('data_marts') }}" class="btn btn-light btn-sm">
+                    <i class="fas fa-arrow-left me-1"></i>Voltar
+                </a>
+            </div>
+            <div class="card-body">
+                {% if usuarios %}
+                    <!-- Seção de Destaques -->
+                    <div class="row mb-5">
+                        <div class="col-md-4">
+                            <div class="card bg-primary text-white h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-trophy mb-3" style="font-size: 2.5rem;"></i>
+                                    <h4>Maior Diversidade</h4>
+                                    {% set usuario_mais_filmes = usuarios | sort(attribute='filmes_unicos_avaliados', reverse=true) | first %}
+                                    <h5 class="fw-bold">{{ usuario_mais_filmes.nome }}</h5>
+                                    <p class="mb-0">{{ usuario_mais_filmes.email }}</p>
+                                    <span class="badge bg-light text-dark mt-2">{{ usuario_mais_filmes.filmes_unicos_avaliados }} filmes únicos</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-success text-white h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-star mb-3" style="font-size: 2.5rem;"></i>
+                                    <h4>Maior Nota Média</h4>
+                                    {% set usuario_maior_nota = usuarios | sort(attribute='nota_media_dada', reverse=true) | first %}
+                                    <h5 class="fw-bold">{{ usuario_maior_nota.nome }}</h5>
+                                    <p class="mb-0">{{ usuario_maior_nota.email }}</p>
+                                    <span class="badge bg-light text-dark mt-2">{{ "%.1f"|format(usuario_maior_nota.nota_media_dada) }} ⭐</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-warning text-dark h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-chart-line mb-3" style="font-size: 2.5rem;"></i>
+                                    <h4>Mais Avaliações</h4>
+                                    {% set usuario_mais_avaliacoes = usuarios | sort(attribute='total_avaliacoes', reverse=true) | first %}
+                                    <h5 class="fw-bold">{{ usuario_mais_avaliacoes.nome }}</h5>
+                                    <p class="mb-0">{{ usuario_mais_avaliacoes.email }}</p>
+                                    <span class="badge bg-dark mt-2">{{ usuario_mais_avaliacoes.total_avaliacoes }} avaliações</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabela de Resultados -->
+                    <div class="table-responsive mb-4">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th><i class="fas fa-user me-1"></i>Nome</th>
+                                    <th><i class="fas fa-envelope me-1"></i>Email</th>
+                                    <th><i class="fas fa-star me-1"></i>Total Avaliações</th>
+                                    <th><i class="fas fa-film me-1"></i>Filmes Únicos</th>
+                                    <th><i class="fas fa-chart-line me-1"></i>Nota Média Dada</th>
+                                    <th><i class="fas fa-calendar me-1"></i>Período</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for usuario in usuarios %}
+                                <tr>
+                                    <td><strong>{{ usuario.nome }}</strong></td>
+                                    <td><small>{{ usuario.email }}</small></td>
+                                    <td>
+                                        <span class="badge bg-primary">{{ usuario.total_avaliacoes }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">{{ usuario.filmes_unicos_avaliados }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-warning text-dark">{{ "%.1f"|format(usuario.nota_media_dada) }}</span>
+                                    </td>
+                                    <td>
+                                        <small>
+                                            {{ usuario.primeira_avaliacao.strftime('%d/%m/%Y') if usuario.primeira_avaliacao }} - 
+                                            {{ usuario.ultima_avaliacao.strftime('%d/%m/%Y') if usuario.ultima_avaliacao }}
+                                        </small>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Insights da Análise -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card border-info">
+                                <div class="card-header bg-info text-white">
+                                    <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Estatísticas</h6>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><strong>Total de usuários analisados:</strong> {{ usuarios|length }}</li>
+                                        <li><strong>Maior número de filmes únicos:</strong> 
+                                            {% set max_filmes = usuarios|map(attribute='filmes_unicos_avaliados')|max %}
+                                            {{ max_filmes }}
+                                        </li>
+                                        <li><strong>Maior número de avaliações:</strong> 
+                                            {% set max_avaliacoes = usuarios|map(attribute='total_avaliacoes')|max %}
+                                            {{ max_avaliacoes }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-info">
+                                <h6><i class="fas fa-lightbulb me-2"></i>Insights da Análise</h6>
+                                <ul class="mb-0">
+                                    <li>Mostra a diversidade de filmes avaliados por cada usuário</li>
+                                    <li>Permite identificar usuários com preferências mais amplas</li>
+                                    <li>Útil para sistemas de recomendação personalizados</li>
+                                    <li>Indica o engajamento e variedade de consumo de conteúdo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-film text-muted" style="font-size: 4rem;"></i>
+                        <h4 class="text-muted mt-3">Nenhum dado encontrado</h4>
+                        <p class="text-muted">Não há dados suficientes para gerar esta análise. Verifique se existem usuários e avaliações no sistema.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

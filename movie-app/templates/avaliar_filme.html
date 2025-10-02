@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block title %}Avaliar {{ filme_titulo }} - Movie Rating{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+                <h3 class="mb-0">
+                    <i class="fas fa-star me-2"></i>Avaliar Filme
+                </h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="text-center mb-4">
+                    {% if filme_selecionado %}
+                    <h4 class="text-primary">Avaliar: {{ filme_selecionado }}</h4>
+                    <p class="text-muted">Compartilhe sua opinião sobre este filme</p>
+                    {% else %}
+                    <h4 class="text-primary">Avaliar Filme</h4>
+                    <p class="text-muted">Compartilhe sua opinião sobre um filme</p>
+                    {% endif %}
+                </div>
+
+                {% if usuarios %}
+                <form method="POST" action="{{ url_for('avaliar_filme') }}">
+                    
+                    <div class="mb-3">
+                        <label for="user_id" class="form-label">
+                            <i class="fas fa-user me-1"></i>Selecione o Usuário
+                        </label>
+                        <select class="form-select" id="user_id" name="user_id" required>
+                            <option value="">Escolha um usuário...</option>
+                            {% for usuario in usuarios %}
+                            <option value="{{ usuario.id }}">{{ usuario.nome }} ({{ usuario.email }})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="filme_titulo" class="form-label">
+                            <i class="fas fa-film me-1"></i>Selecione o Filme
+                        </label>
+                        <select class="form-select" id="filme_titulo" name="filme_titulo" required>
+                            <option value="">Escolha um filme...</option>
+                            {% for filme in filmes %}
+                            <option value="{{ filme.titulo }}" {% if filme_selecionado and filme.titulo == filme_selecionado %}selected{% endif %}>{{ filme.titulo }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="nota" class="form-label">
+                            <i class="fas fa-star me-1"></i>Nota (0 a 10)
+                        </label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="range" class="form-range" id="nota" name="nota" 
+                                       min="0" max="10" step="0.1" value="5" oninput="updateRating(this.value)">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="notaInput" 
+                                           min="0" max="10" step="0.1" value="5" 
+                                           onchange="updateSlider(this.value)">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-star text-warning"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <div id="starDisplay" class="text-center">
+                                <span class="star-rating fs-4"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="comentario" class="form-label">
+                            <i class="fas fa-comment me-1"></i>Comentário (opcional)
+                        </label>
+                        <textarea class="form-control" id="comentario" name="comentario" rows="4" 
+                                  placeholder="Escreva sua opinião sobre o filme..."></textarea>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-save me-2"></i>Salvar Avaliação
+                        </button>
+                        <a href="{{ url_for('filmes') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Voltar aos Filmes
+                        </a>
+                    </div>
+                </form>
+                {% else %}
+                <div class="text-center py-4">
+                    <i class="fas fa-exclamation-triangle fa-3x text-warning mb-3"></i>
+                    <h5>Nenhum usuário cadastrado</h5>
+                    <p class="text-muted">É necessário ter pelo menos um usuário cadastrado para avaliar filmes.</p>
+                    <a href="{{ url_for('cadastrar_usuario') }}" class="btn btn-primary">
+                        <i class="fas fa-user-plus me-2"></i>Cadastrar Usuário
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-lightbulb me-2"></i>Dicas para uma boa avaliação
+                </h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Seja honesto em sua avaliação</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Considere roteiro, atuação e direção</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Evite spoilers nos comentários</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-star text-warning me-2"></i>0-2: Muito ruim</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>3-5: Regular</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>6-7: Bom</li>
+                            <li><i class="fas fa-star text-warning me-2"></i>8-10: Excelente</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function updateRating(value) {
+    document.getElementById('notaInput').value = value;
+    updateStars(value);
+}
+
+function updateSlider(value) {
+    document.getElementById('nota').value = value;
+    updateStars(value);
+}
+
+function updateStars(rating) {
+    const starDisplay = document.getElementById('starDisplay').querySelector('.star-rating');
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    const emptyStars = 10 - fullStars - (hasHalfStar ? 1 : 0);
+    
+    let starsHTML = '';
+    
+    // Estrelas cheias
+    for (let i = 0; i < fullStars; i++) {
+        starsHTML += '<i class="fas fa-star"></i>';
+    }
+    
+    // Meia estrela
+    if (hasHalfStar) {
+        starsHTML += '<i class="fas fa-star-half-alt"></i>';
+    }
+    
+    // Estrelas vazias
+    for (let i = 0; i < emptyStars; i++) {
+        starsHTML += '<i class="far fa-star"></i>';
+    }
+    
+    starDisplay.innerHTML = starsHTML + ` <span class="ms-2 text-muted">(${rating}/10)</span>`;
+}
+
+// Inicializar com valor padrão
+document.addEventListener('DOMContentLoaded', function() {
+    updateStars(5);
+});
+</script>
+{% endblock %}

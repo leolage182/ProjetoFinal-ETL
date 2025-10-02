@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block title %}Top Usuários Avaliadores - Movie Rating App{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">
+                    <i class="fas fa-users me-2"></i>Top 5 Usuários Mais Ativos em Avaliações
+                </h2>
+                <a href="{{ url_for('data_marts') }}" class="btn btn-light btn-sm">
+                    <i class="fas fa-arrow-left me-1"></i>Voltar
+                </a>
+            </div>
+            <div class="card-body">
+                {% if usuarios %}
+                    <!-- Seção de Destaques -->
+                    <div class="row mb-5">
+                        <div class="col-md-4">
+                            <div class="card bg-warning text-dark h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-crown mb-3" style="font-size: 2.5rem;"></i>
+                                    <h4>Usuário Mais Ativo</h4>
+                                    <h5 class="fw-bold">{{ usuarios[0].nome }}</h5>
+                                    <p class="mb-0">{{ usuarios[0].email }}</p>
+                                    <span class="badge bg-dark mt-2">{{ usuarios[0].total_avaliacoes }} avaliações</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-success text-white h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-star mb-3" style="font-size: 2.5rem;"></i>
+                                    <h4>Maior Nota Média</h4>
+                                    {% set usuario_maior_nota = usuarios | sort(attribute='nota_media_dada', reverse=true) | first %}
+                                    <h5 class="fw-bold">{{ usuario_maior_nota.nome }}</h5>
+                                    <p class="mb-0">{{ usuario_maior_nota.email }}</p>
+                                    <span class="badge bg-light text-dark mt-2">{{ "%.1f"|format(usuario_maior_nota.nota_media_dada) }} ⭐</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-primary text-white h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-calendar mb-3" style="font-size: 2.5rem;"></i>
+                                    <h4>Usuário Pioneiro</h4>
+                                    {% set usuario_pioneiro = usuarios | sort(attribute='primeira_avaliacao') | first %}
+                                    <h5 class="fw-bold">{{ usuario_pioneiro.nome }}</h5>
+                                    <p class="mb-0">{{ usuario_pioneiro.email }}</p>
+                                    <span class="badge bg-light text-dark mt-2">{{ usuario_pioneiro.primeira_avaliacao.strftime('%d/%m/%Y') if usuario_pioneiro.primeira_avaliacao else 'N/A' }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cards dos Usuários -->
+                    <div class="row">
+                        {% for usuario in usuarios %}
+                            <div class="col-md-6 col-lg-4 mb-4">
+                                <div class="card h-100 border-info">
+                                    <div class="card-body text-center">
+                                        <div class="mb-3">
+                                            {% if loop.index == 1 %}
+                                                <i class="fas fa-crown text-warning" style="font-size: 2.5rem;"></i>
+                                            {% elif loop.index == 2 %}
+                                                <i class="fas fa-medal text-secondary" style="font-size: 2.5rem;"></i>
+                                            {% elif loop.index == 3 %}
+                                                <i class="fas fa-award text-warning" style="font-size: 2.5rem;"></i>
+                                            {% else %}
+                                                <i class="fas fa-user-circle text-info" style="font-size: 2.5rem;"></i>
+                                            {% endif %}
+                                        </div>
+                                        
+                                        <h5 class="card-title text-info">{{ usuario.nome }}</h5>
+                                        
+                                        <div class="mb-3">
+                                            <span class="badge bg-info fs-6">
+                                                #{{ loop.index }}º Lugar
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="row text-center">
+                                            <div class="col-6">
+                                                <div class="border-end">
+                                                    <h4 class="text-primary mb-0">{{ usuario.total_avaliacoes }}</h4>
+                                                    <small class="text-muted">Avaliações</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <h4 class="text-success mb-0">{{ "%.1f"|format(usuario.nota_media_dada) }}</h4>
+                                                <small class="text-muted">Nota Média</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mt-3">
+                                            <small class="text-muted">
+                                                <i class="fas fa-calendar me-1"></i>
+                                                Primeira avaliação: {{ usuario.primeira_avaliacao.strftime('%d/%m/%Y') if usuario.primeira_avaliacao else 'N/A' }}
+                                            </small>
+                                        </div>
+                                        
+                                        <div class="mt-3">
+                                            <small class="text-muted">
+                                                <i class="fas fa-envelope me-1"></i>
+                                                {{ usuario.email }}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Insights da Análise -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="alert alert-info">
+                                <h6><i class="fas fa-info-circle me-2"></i>Critérios de Ranking</h6>
+                                <p class="mb-0">
+                                    O ranking é baseado no número total de avaliações realizadas por cada usuário. 
+                                    A nota média também é exibida para mostrar a tendência de avaliação de cada usuário.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-users text-muted" style="font-size: 4rem;"></i>
+                        <h4 class="text-muted mt-3">Nenhum usuário encontrado</h4>
+                        <p class="text-muted">Não há dados suficientes para gerar o ranking de usuários.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.border-info {
+    border-color: #0dcaf0 !important;
+}
+
+.fs-6 {
+    font-size: 1rem !important;
+}
+
+.border-end {
+    border-right: 1px solid #dee2e6 !important;
+}
+</style>
+{% endblock %}

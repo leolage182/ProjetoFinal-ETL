@@ -1,0 +1,52 @@
+# Multi-stage build para ETL otimizado
+FROM python:3.11-slim as builder
+
+# Instalar dependências de build
+RUN apt-get update && apt-get install -y \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Criar ambiente virtual
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Instalar dependências Python
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir pandas unicodedata2
+
+# Estágio de produção
+FROM python:3.11-slim as production
+
+# Criar usuário não-root para segurança
+RUN groupadd -r etluser && useradd -r -g etluser etluser
+
+# Copiar ambiente virtual do estágio builder
+COPY --from=builder /opt/venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Definir diretório de trabalho
+WORKDIR /app
+
+# Copiar scripts de limpeza com ownership correto
+COPY --chown=etluser:etluser etl01 /app/
+COPY --chown=etluser:etluser usuarios_cleaning.py /app/
+COPY --chown=etluser:etluser avaliacoes_cleaning.py /app/
+COPY --chown=etluser:etluser run_all_cleaning.py /app/
+
+# Criar diretórios necessários
+RUN mkdir -p /app/data /app/output && \
+    chown -R etluser:etluser /app
+
+# Mudar para usuário não-root
+USER etluser
+
+# Configurar variáveis de ambiente
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Health check para ETL
+HEALTHCHECK --interval=60s --timeout=30s --start-period=10s --retries=2 \
+    CMD python -c "import pandas; print('ETL container healthy')" || exit 1
+
+# Comando para executar o pipeline de limpeza
+CMD ["python", "run_all_cleaning.py"]

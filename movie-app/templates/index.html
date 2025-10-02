@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}Movie Rating - Início{% endblock %}
+
+{% block styles %}
+<style>
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.data-marts-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.data-marts-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(30px, -30px);
+}
+
+.data-marts-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    transform: translate(-50px, 50px);
+}
+
+.btn-light:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.section-title {
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card text-center">
+            <div class="card-body p-5">
+                <i class="fas fa-film fa-4x text-primary mb-4"></i>
+                <h1 class="card-title display-4 fw-bold mb-4">Movie Rating App</h1>
+                <p class="card-text lead mb-4">
+                    Bem-vindo ao sistema de avaliação de filmes! Aqui você pode cadastrar usuários, 
+                    explorar nossa coleção de filmes e compartilhar suas avaliações.
+                </p>
+                
+                <div class="row g-3 mt-4">
+                    <div class="col-md-6">
+                        <a href="{{ url_for('cadastrar_usuario') }}" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-user-plus me-2"></i>Cadastrar Usuário
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{ url_for('filmes') }}" class="btn btn-outline-primary btn-lg w-100">
+                            <i class="fas fa-video me-2"></i>Ver Filmes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Seção Principal - Funcionalidades do Sistema -->
+<div class="row mt-5">
+    <div class="col-12">
+        <h3 class="text-center mb-4 section-title">
+            <i class="fas fa-cogs me-2"></i>Funcionalidades do Sistema
+        </h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Gerenciar Usuários</h5>
+                <p class="card-text">Cadastre novos usuários e visualize todos os usuários registrados no sistema.</p>
+                <a href="{{ url_for('usuarios') }}" class="btn btn-outline-primary">Ver Usuários</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-video fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Catálogo de Filmes</h5>
+                <p class="card-text">Explore nossa coleção de filmes e descubra novos títulos para avaliar.</p>
+                <a href="{{ url_for('filmes') }}" class="btn btn-outline-primary">Ver Filmes</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-star fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Avaliações</h5>
+                <p class="card-text">Veja todas as avaliações feitas pelos usuários e suas opiniões sobre os filmes.</p>
+                <a href="{{ url_for('avaliacoes') }}" class="btn btn-outline-primary">Ver Avaliações</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Seção Destacada - Data Marts -->
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card border-0 shadow-lg data-marts-section">
+            <div class="card-body p-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px;">
+                <div class="row align-items-center text-white">
+                    <div class="col-md-8">
+                        <h2 class="card-title mb-3 fw-bold" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                            <i class="fas fa-chart-line me-3" style="color: #ffd700;"></i>Data Marts & Analytics
+                        </h2>
+                        <p class="card-text lead mb-4" style="color: #f8f9fa; font-size: 1.1rem;">
+                            Acesse relatórios avançados e análises detalhadas sobre filmes, usuários e avaliações. 
+                            Descubra insights valiosos através de nossos data marts especializados.
+                        </p>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2" style="color: #f8f9fa;"><i class="fas fa-check-circle me-2" style="color: #28a745;"></i>Top filmes por gênero</li>
+                            <li class="mb-2" style="color: #f8f9fa;"><i class="fas fa-check-circle me-2" style="color: #28a745;"></i>Usuários mais ativos</li>
+                            <li class="mb-2" style="color: #f8f9fa;"><i class="fas fa-check-circle me-2" style="color: #28a745;"></i>Análise de filmes mal avaliados</li>
+                            <li class="mb-2" style="color: #f8f9fa;"><i class="fas fa-check-circle me-2" style="color: #28a745;"></i>Relatórios personalizados</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fas fa-chart-bar fa-6x mb-4" style="color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);"></i>
+                        <div>
+                            <a href="{{ url_for('data_marts') }}" class="btn btn-warning btn-lg px-4 fw-bold shadow" style="background: linear-gradient(45deg, #ffd700, #ffed4e); border: none; color: #333;">
+                                <i class="fas fa-analytics me-2"></i>Acessar Data Marts
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

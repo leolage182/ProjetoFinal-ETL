@@ -1,0 +1,70 @@
+
+import pandas as pd
+import unicodedata
+
+# === Ler CSV bruto ===
+try:
+    # Ler do arquivo montado da raiz do projeto
+    df = pd.read_csv("/app/input/filmes_raw.csv", on_bad_lines='skip', engine='python')
+except FileNotFoundError:
+    try:
+        # Fallback para arquivo local
+        df = pd.read_csv("filmes_raw.csv", on_bad_lines='skip', engine='python')
+    except FileNotFoundError:
+        # Último fallback
+        df = pd.read_csv("data/filmes_raw.csv", on_bad_lines='skip', engine='python')
+
+# === Padronizar nomes das colunas: remover espaços e acentos ===
+def normalize_col(col):
+    col = col.strip()
+    col = unicodedata.normalize('NFKD', col).encode('ASCII', 'ignore').decode('ASCII')
+    col = col.replace(' ', '').replace('-', '').replace('_', '')
+    return col.lower()
+
+df.columns = [normalize_col(c) for c in df.columns]
+
+# === Renomear colunas manualmente ===
+df = df.rename(columns={
+    "titulo": "titulo",
+    "anolancamento": "ano_lancamento",
+    "genero": "genero",
+    "notaimdb": "nota_imdb"
+})
+
+# === Limpeza dos dados ===
+# Verificar duplicatas
+duplicatas = df.duplicated().sum()
+
+# Remover duplicatas
+df = df.drop_duplicates()
+
+# Verificar valores nulos
+nulos = df.isnull().sum().sum()
+
+# === Tratar valores nulos e tipos ===
+df["ano_lancamento"] = df["ano_lancamento"].fillna(0).astype(int)
+df["nota_imdb"] = df["nota_imdb"].fillna(0.0).astype(float)
+df["genero"] = df["genero"].str.strip()
+df["titulo"] = df["titulo"].str.strip()
+
+# === Salvar CSV limpo ===
+try:
+    # Salvar no volume compartilhado para outros containers
+    df.to_csv("/app/data/filmes_clean_500.csv", index=False, encoding="utf-8")
+    arquivo_saida = "/app/data/filmes_clean_500.csv"
+except:
+    try:
+        # Fallback local
+        df.to_csv("filmes_clean_500.csv", index=False, encoding="utf-8")
+        arquivo_saida = "filmes_clean_500.csv"
+    except:
+        df.to_csv("data/filmes_clean.csv", index=False, encoding="utf-8")
+        arquivo_saida = "data/filmes_clean.csv"
+
+# === Relatório de limpeza ===
+print("Limpeza de dados concluida!")
+if duplicatas > 0:
+    print(f"Removidas {duplicatas} duplicatas")
+if nulos > 0:
+    print(f"Tratados {nulos} valores nulos")
+print(f"Dados salvos em: {arquivo_saida}")

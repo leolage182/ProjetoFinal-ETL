@@ -1,0 +1,130 @@
+# 🔐 Arquivos de Ambiente e Segurança
+.env
+.env.local
+.env.production
+.env.staging
+*.key
+*.pem
+*.crt
+
+# 🐍 Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 🌐 Flask
+instance/
+.webassets-cache
+
+# 📊 Dados Temporários e Logs
+*.log
+logs/
+*.tmp
+*.temp
+temp/
+tmp/
+
+# 🗄️ Dados Sensíveis
+*_raw.csv
+*_clean.csv
+backup/
+exports/
+data/raw/
+data/processed/
+data/temp/
+
+# 🐳 Docker
+.dockerignore
+docker-compose.override.yml
+
+# 💻 IDEs e Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# 📦 Dependências
+node_modules/
+.npm
+.yarn/
+.pnp.*
+
+# 🧪 Testes
+.coverage
+.pytest_cache/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# 📈 Jupyter Notebooks
+.ipynb_checkpoints
+
+# 🔧 Ferramentas de Desenvolvimento
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+
+# 🚀 Deploy e CI/CD
+.github/secrets/
+deploy/secrets/
+
+# 📱 Mobile
+*.mobileprovision
+*.p12
+
+# 🌍 Localization
+*.mo
+*.pot
+
+# 📋 Documentação Temporária
+docs/_build/
+site/
+
+# 🔄 Cache
+.cache/
+*.cache
+
+# 📊 Relatórios
+reports/
+*.report
+
+# 🎯 Específicos do Projeto
+movie-app/data/
+etl-data-cleaning/output/
+etl-postgres/backup/
+*.backup
+*.dump
+
+# 🗄️ Dados do PostgreSQL (não versionar)
+pgdata/
+postgres-data/
+*.pid
+*.opts
+postmaster.*
